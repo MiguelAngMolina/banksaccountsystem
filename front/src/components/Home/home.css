@@ -1,0 +1,20 @@
+.homepage{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../screenshots/434_generated.jpg');
+    background-size:cover;
+    z-index: 1;
+    font-family: cursive;
+
+}
+
+.homepage h1{
+    font-size: 4rem;
+}
+
+.homepage p{
+    font-size: 2rem;
+}
