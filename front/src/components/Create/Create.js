@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { registerAdmin } from '../../Service';
+import './Create.css';
+
 const Create = () => {
     const [userId, setUserId] = useState('');
     const [password, setPassword] = useState('');

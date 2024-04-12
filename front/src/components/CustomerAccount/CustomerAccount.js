@@ -3,8 +3,9 @@ import Select from "react-select"
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import "./customer-account.css"
-import { createAccount, getAllBranch } from "../../Service"
+import { createAccount } from "../../Service"
 import Home from "../Home/Home";
+import Dashboard from "../Dashboard/Dashboard";
 
 
 const CustomerAccount=props=>
@@ -12,7 +13,6 @@ const CustomerAccount=props=>
 
     const [accountNumber,setAccountNumber]=useState('');
     const [customerNumber,setCustomerNumber]=useState('');
-    const [branchId,setBranchId]=useState('');
     const [openingBalance,setOpeningBalance]=useState('');
     const [openingDate,setOpeningDate]=useState('');
     const [accountType,setAccountType]=useState('');
@@ -24,20 +24,17 @@ const CustomerAccount=props=>
     const navigate = useNavigate();
     const [isLoggedin, setIsLoggedin] = useState(false);//It is used to validate every component rendering
     
-        const BranchHandler=(selectedOption)=>{
-            setBranchId(selectedOption.value);
-            console.log("Branch Handle",selectedOption.value);
-        }
+        
+        const accountTypeHandler = (selectedOption) => {
+            setAccountType(selectedOption.value);
+            console.log("Account Type", selectedOption.value);
+        };
         
         const StatusHandler=(selectedOption)=>{
             setAccountStatus(selectedOption.value);
             console.log("Acccount Status",selectedOption.value);
         }
         
-        const accountTypeHandler=(selectedOption)=>{
-            setAccountType(selectedOption.value);
-            console.log("Branch Handle",selectedOption.value);
-        }
         const init=async()=>{
 
             //setting option for dropdown
@@ -57,26 +54,6 @@ const CustomerAccount=props=>
                 "label": "Inactive"
             }];
             setAccountStatusOptions(tempAccountStatus);
-            try{
-                let {data}= await getAllBranch();
-                let tempBranchID = new Set();
-                data.map(branch => {
-                    tempBranchID.add(branch.branchId);
-                });
-                let tempOptions = [];
-                [...tempBranchID].map(id => {
-                    tempOptions.push({
-                    "value": id,
-                    "label": id
-                    });
-                })
-                console.log(tempOptions)
-                setBranchIdOptions(tempOptions);
-              }
-              catch(err)
-              {
-                setError(err)
-              }
           }
     
         useEffect(() => {
@@ -93,13 +70,15 @@ const CustomerAccount=props=>
 
             const accountData = {
                 accountNumber: parseInt(accountNumber),
-                branchId: parseInt(branchId),
                 openingBalance: parseInt(openingBalance),
                 accountOpeningDate: openingDate,
                 accountStatus,
                 accountType
             };
             console.log(accountData);
+
+        
+
         
         try{
             let {status} = await createAccount(customerNumber, accountData);
@@ -137,7 +116,11 @@ const CustomerAccount=props=>
     <>
         {isLoggedin?
         (
+            <div>
+            <Dashboard/>  
+
         <div class="customer-form">
+            
             <div class="customer">
 
                 <h1 class="text-center">Add Account</h1>
@@ -158,12 +141,6 @@ const CustomerAccount=props=>
                             value={customerNumber}
                             placeholder="Customer Number"
                             required />
-                    </div>
-                    <div class="form-group ">
-                        <label class="form-label">Branch Id</label>
-                    
-                            <Select options={branchIdOptions}  onChange={BranchHandler}></Select>
-
                     </div>
                     <div class="form-group ">
                         <label class="form-label">Opening Balance</label>
@@ -191,6 +168,7 @@ const CustomerAccount=props=>
                     <input class="btn btn-success w-100" type="submit" onClick={Add} value="Add"  />
                 </form>
             </div>
+        </div>
         </div>):(<Home />)
         }
     </>

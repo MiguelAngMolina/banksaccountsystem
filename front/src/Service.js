@@ -11,7 +11,6 @@ export const adminLogin = async (body) => {
     return response;
 };
 
-// registerAdmin
 export const registerAdmin = async (body) => {
     const response = await adminService.post(`/admin/create`, body);
     return response;
@@ -22,30 +21,33 @@ export const getAllCustomerAccount = async ()=> {
     return response;
 };
 
-export const getAllBranch = async ()=> {
-    const response = await adminService.get(`/branch/`);
-    return response;
-};
 
 export const deleteCustomerAccount = async (id) => {
     const response = await adminService.delete(`/account/${id}`);
     return response;
 };
 
-export const deleteBranch = async (id) => {
-    const response = await adminService.delete(`/branch/${id}`);
-    return response;
-};
-
-export const createBranch = async (body) => {
-    const response = await adminService.post(`/branch/`,body);
-    return response;
-};
 
 export const createAccount = async (id, body) => {
     const response = await adminService.post(`/account/${id}`, body);
     return response;
 };
+
+// method get all customers
+export const getAllCustomer = async ()=> {
+    const response = await adminService.get(`/customer/`);
+    return response;
+};
+
+// method get customer by id
+export const getCustomerById = async (id) => {
+    const response = await adminService.get(`/customer/${id}`);
+    return response;
+};
+
+
+
+
 
 
 

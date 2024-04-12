@@ -1,6 +1,7 @@
 package com.capstone.bankadmin.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,14 +21,11 @@ public class CustomerServiceImpl implements CustomerService{
     CustomerRepository repo;
 	@Override
 	public List<Customer>getAllData() {
-		// TODO Auto-generated method stub
 		return repo.findAll();
 	}
 
 	@Override
 	public String deleteCustomer(int id) throws NotFoundException{
-		
-		// TODO Auto-generated method stub
 		String  customerId=String.valueOf(id);
 		Customer c=repo.findById(id).orElseThrow(()->new NotFoundException("Customer with Id: "+customerId+" not found"));
 		repo.deleteById(c.getCustomerNumber());
@@ -40,5 +38,11 @@ public class CustomerServiceImpl implements CustomerService{
 		System.out.println(ex.getMessage());
 		return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
 	}
+
+	public Optional<Customer> getCustomerByNumber(int customerNumber) {
+        return repo.findById(customerNumber);
+    }
+
+	
 
 }

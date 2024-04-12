@@ -9,7 +9,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('../../screenshots/434_generated.jpg');
     overflow: auto;
     font-family: cursive;
 }

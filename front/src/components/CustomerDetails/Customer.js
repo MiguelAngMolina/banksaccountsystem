@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import "./customer.css";
 import {Link} from "react-router-dom";
 import { deleteCustomerAccount, getAllCustomerAccount } from '../../Service';
 import Dashboard from '../Dashboard/Dashboard';
@@ -63,7 +62,6 @@ const Customer = props => {
             <tr>
               <th scope="col">AccountNo</th>
               <th scope="col">CustomerNo</th>
-              <th scope="col">BranchId</th>
               <th scope="col">Balance</th>
               <th scope="col">OpeningDate</th>
               <th>Action</th>
@@ -74,7 +72,6 @@ const Customer = props => {
               <tr key={account.accountNumber}>
                 <td>{account.accountNumber}</td>
                 <td>{account.customer.customerNumber}</td>
-                <td>{account.branchId}</td>
                 <td>{account.openingBalance}</td>
                 <td>{account.accountOpeningDate}</td>
                 <td>

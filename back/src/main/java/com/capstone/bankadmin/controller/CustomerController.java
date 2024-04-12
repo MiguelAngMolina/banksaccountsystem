@@ -22,6 +22,8 @@ public class CustomerController {
 
 	@Autowired
 	CustomerService customerService;
+
+
 	@GetMapping("/")
 	public ResponseEntity<List<Customer>> showAllData(){
 		 List<Customer>customerDetails=customerService.getAllData();
@@ -41,4 +43,11 @@ public class CustomerController {
 		System.out.println(ex.getMessage());
 		return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
 	}
+
+    @GetMapping("/{customerNumber}")
+	public ResponseEntity<Customer> getCustomer(@PathVariable int customerNumber) {
+    Customer customer = customerService.getCustomerByNumber(customerNumber)
+            .orElseThrow(() -> new NotFoundException("Customer with ID: " + customerNumber + " not found"));
+    return new ResponseEntity<>(customer, HttpStatus.OK);
+}
 }

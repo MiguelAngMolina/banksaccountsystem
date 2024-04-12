@@ -1,0 +1,2 @@
+# Ignore the node_modules folder in the front folder
+front/node_modules
