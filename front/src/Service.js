@@ -16,6 +16,9 @@ export const registerAdmin = async (body) => {
     return response;
 };
 
+
+
+
 export const getAllCustomerAccount = async ()=> {
     const response = await adminService.get(`/account/`);
     return response;
@@ -33,6 +36,8 @@ export const createAccount = async (id, body) => {
     return response;
 };
 
+
+
 // method get all customers
 export const getAllCustomer = async ()=> {
     const response = await adminService.get(`/customer/`);
@@ -45,39 +50,20 @@ export const getCustomerById = async (id) => {
     return response;
 };
 
+// create customer
+export const createCustomer = async (body) => {
+    const response = await adminService.post(`/customer/create`, body);
+    return response;
+};
 
+//delete customer
+export const deleteCustomer = async (id) => {
+    const response = await adminService.delete(`/customer/${id}`);
+    return response;
+};
 
-
-
-
-
-// DUMMY DATA
-// const dummyCustomers=[
-//     {
-//     "AccountNo":"C001",
-//     "customerNo":"1234",
-//     "branchId":"b001",
-//     "balance":"6000",
-//     "openingDate":"2022-7-11"
-//     },
-//     {
-//         "AccountNo":"C001",
-//     "customerNo":"1234",
-//     "branchId":"b001",
-//     "balance":"6000",
-//     "openingDate":"2022-7-11"
-//     }
-// ];
-// const dummyBranch=[
-//     {
-//     "BranchId":"b001",
-//     "BranchName":"Asif Ali Road",
-//     "BranchAddress":"Delhi",
-//     },
-//     {
-//       "BranchId":"b001",
-//       "BranchName":"Asif Ali Road",
-//       "BranchAddress":"Delhi",
-//       }
-   
-// ];
+//update customer
+export const updateCustomer = async (id, body) => {
+    const response = await adminService.put(`/customer/${id}`, body);
+    return response;
+};

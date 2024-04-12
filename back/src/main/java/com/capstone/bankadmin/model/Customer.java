@@ -20,6 +20,8 @@ public class Customer {
 	@Id
 	@Column(name="customer_number")
 	private int customerNumber;
+
+	
 	
 	@Column(name="firstname")
 	private String firstName;

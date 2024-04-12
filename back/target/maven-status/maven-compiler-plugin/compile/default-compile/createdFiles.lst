@@ -1,9 +1,6 @@
 com\capstone\bankadmin\model\Admin.class
 com\capstone\bankadmin\repository\CustomerRepository.class
 com\capstone\bankadmin\controller\CustomerController.class
-com\capstone\bankadmin\model\Branch.class
-com\capstone\bankadmin\service\BranchService.class
-com\capstone\bankadmin\service\BranchServiceImpl.class
 com\capstone\bankadmin\repository\AdminRepository.class
 com\capstone\bankadmin\controller\AdminController.class
 com\capstone\bankadmin\exception\NotFoundException.class
@@ -17,7 +14,5 @@ com\capstone\bankadmin\service\CustomerServiceImpl.class
 com\capstone\bankadmin\service\AccountService.class
 com\capstone\bankadmin\service\AdminServiceImpl.class
 com\capstone\bankadmin\service\CustomerService.class
-com\capstone\bankadmin\controller\BranchController.class
-com\capstone\bankadmin\repository\BranchRepository.class
 com\capstone\bankadmin\utils\CorsFilter.class
 com\capstone\bankadmin\service\AccountServiceImpl.class

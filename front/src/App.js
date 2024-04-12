@@ -7,19 +7,14 @@ import NotFound from "./components/NotFound/NotFound";
 import CustomerAccount from "./components/CustomerAccount/CustomerAccount";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Create from "./components/Create/Create";
-// import customerlist
 import CustomersList from "./components/CustomerList/CustomerList";
-
-
-
+import CreateCustomer from "./components/CreateCustomer/CreateCustomer";
+import EditCustomer from "./components/EditCustomer/EditCustomer";
 
 function App() {
   return (
     <div className="App">
-
-     
-    
-       
+   
        <Router>
      
       <Routes>
@@ -32,6 +27,9 @@ function App() {
       <Route path="*" element={<NotFound />} />
       <Route path="/create" element={<Create/>} />
       <Route path="/customerlist" element={<CustomersList/>} />
+      <Route path="/createcustomer" element={<CreateCustomer/>} />
+      <Route path="/editcustomer/:customerNumber" element={<EditCustomer/>} />
+
 
       </Routes>
      

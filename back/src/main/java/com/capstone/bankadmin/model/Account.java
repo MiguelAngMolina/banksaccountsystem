@@ -21,8 +21,6 @@ public class Account {
 	@JoinColumn(name="customer_number")
 	private Customer customer;
 	
-	@Column(name="branch_id")
-	private String branchId;
 	
 	@Column(name="opening_balance")
 	private int openingBalance;
@@ -42,7 +40,6 @@ public class Account {
 			int openingBalance, String accountType, String accountStatus, Date accountOpeningDate ) {
 		super();
 		this.accountNumber = accountNumber;
-		this.branchId = branchId;
 		this.openingBalance = openingBalance;
 		this.accountType = accountType;
 		this.accountStatus = accountStatus;
@@ -57,13 +54,6 @@ public class Account {
 		this.accountNumber = accountNumber;
 	}
 
-	public String getBranchId() {
-		return branchId;
-	}
-
-	public void setBranchId(String branchId) {
-		this.branchId = branchId;
-	}
 
 	public int getOpeningBalance() {
 		return openingBalance;
@@ -107,7 +97,7 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account [accountNumber=" + accountNumber + ", customer=" + customer + ", branchId=" + branchId
+		return "Account [accountNumber=" + accountNumber + ", customer=" + customer 
 				+ ", openingBalance=" + openingBalance + ", accountType=" + accountType + ", accountStatus="
 				+ accountStatus + "]";
 	}

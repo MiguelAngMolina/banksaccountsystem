@@ -8,6 +8,8 @@ import com.capstone.bankadmin.model.Customer;
 
 public interface CustomerService {
        public List<Customer> getAllData();
-       public String deleteCustomer(int id) throws NotFoundException;
        public Optional<Customer> getCustomerByNumber(int customerNumber);
+       public Customer createCustomer(Customer customer);
+       public void deleteCustomer(int customerNumber) throws NotFoundException;
+       public Customer updateCustomer(int customerNumber, Customer customer) throws NotFoundException;
 }

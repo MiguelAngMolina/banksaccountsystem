@@ -1,0 +1,4 @@
+com\capstone\bankadmin\BankAdminApplicationTests.class
+com\capstone\bankadmin\controller\AdminControllerTest.class
+com\capstone\bankadmin\service\AccountServiceImplTest.class
+com\capstone\bankadmin\service\AdminServiceImplTest.class

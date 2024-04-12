@@ -24,14 +24,12 @@ public class CustomerServiceImpl implements CustomerService{
 		return repo.findAll();
 	}
 
-	@Override
-	public String deleteCustomer(int id) throws NotFoundException{
-		String  customerId=String.valueOf(id);
-		Customer c=repo.findById(id).orElseThrow(()->new NotFoundException("Customer with Id: "+customerId+" not found"));
-		repo.deleteById(c.getCustomerNumber());
-		return (String)("customer with id: "+customerId+" deleted!"); 
-		
-	}
+	public void deleteCustomer(int customerNumber) throws NotFoundException {
+        Customer customer = repo.findById(customerNumber)
+            .orElseThrow(() -> new NotFoundException("Customer not found with ID: " + customerNumber));
+        
+			repo.delete(customer);
+    }
 	
 	@ExceptionHandler(value = NotFoundException.class)
 	public ResponseEntity<String> handleNotFoundException(NotFoundException ex) {
@@ -42,6 +40,30 @@ public class CustomerServiceImpl implements CustomerService{
 	public Optional<Customer> getCustomerByNumber(int customerNumber) {
         return repo.findById(customerNumber);
     }
+
+	@Override
+	public Customer createCustomer(Customer customer) {
+		return repo.save(customer);
+	}
+
+	@Override
+	public Customer updateCustomer(int customerNumber, Customer customer) throws NotFoundException {
+		Customer existingCustomer = repo.findById(customerNumber)
+				.orElseThrow(() -> new NotFoundException("Customer not found with ID: " + customerNumber));
+		existingCustomer.setFirstName(customer.getFirstName());
+		existingCustomer.setMiddleName(customer.getMiddleName());
+		existingCustomer.setLastName(customer.getLastName());
+		existingCustomer.setCustomerCity(customer.getCustomerCity());
+		existingCustomer.setCustomerContactNo(customer.getCustomerContactNo());
+		existingCustomer.setOccupation(customer.getOccupation());
+		existingCustomer.setCustomerDateOfBirth(customer.getCustomerDateOfBirth());
+		
+		return repo.save(existingCustomer);
+	}
+
+		
+
+	
 
 	
 

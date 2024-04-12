@@ -20,7 +20,7 @@ const Login = () => {
             if (status === 200) {
                 // Logica de éxito
                 localStorage.setItem('token-info', JSON.stringify(userData));
-                navigate("/customers");
+                navigate("/customerlist");
             }
         } catch (err) {
             // Logica de error

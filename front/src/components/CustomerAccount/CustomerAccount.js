@@ -17,7 +17,6 @@ const CustomerAccount=props=>
     const [openingDate,setOpeningDate]=useState('');
     const [accountType,setAccountType]=useState('');
     const [accountStatus,setAccountStatus]=useState('');
-    const [branchIdOptions, setBranchIdOptions] = useState([]);
     const [accountTypeOptions, setAccountTypeOptions] = useState([]);
     const [accountStatusOptions, setAccountStatusOptions] = useState([]);
     const[err,setError]=useState('')
@@ -76,10 +75,6 @@ const CustomerAccount=props=>
                 accountType
             };
             console.log(accountData);
-
-        
-
-        
         try{
             let {status} = await createAccount(customerNumber, accountData);
             if(status === 201) {
@@ -87,7 +82,7 @@ const CustomerAccount=props=>
                 title: "Account Details created successfully!",
                 type: "success", 
                 confirmButtonText: 'Ok'
-              }).then((result) => {  if (result.isConfirmed) { navigate("/dashboard")}});
+              }).then((result) => {  if (result.isConfirmed) { navigate("/customers")}});
               setAccountNumber('');
               setCustomerNumber('');
               setOpeningDate('');
