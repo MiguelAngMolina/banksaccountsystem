@@ -47,7 +47,6 @@ const CreateCustomer = () => {
 
   return (
     <div>
-    <Dashboard />
     <div className="customer-form">
       <div className="customer">
         <h1 className="text-center">Add Customer</h1>

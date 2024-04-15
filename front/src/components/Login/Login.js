@@ -63,9 +63,11 @@ const Login = () => {
                     </div>
                     <button className="btn btn-success w-100" type="submit">SIGN IN</button>
                 </form>
+
                 <div className="mt-3">
                     <Link to="/create" className="btn btn-primary">Create New Admin</Link>
                 </div>
+                
             </div>
         </div>
     );

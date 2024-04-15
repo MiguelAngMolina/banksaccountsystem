@@ -1,3 +1,4 @@
-# Ignore the node_modules folder in the front folder
 front/node_modules
+
+# ignore the folder target from back folder
 back/target

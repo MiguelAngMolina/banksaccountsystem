@@ -1,172 +1,131 @@
-import React, { useState,useEffect } from "react"
-import Select from "react-select"
-import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
-import "./customer-account.css"
-import { createAccount } from "../../Service"
-import Home from "../Home/Home";
-import Dashboard from "../Dashboard/Dashboard";
+import React, { useState, useEffect } from 'react';
+import Select from 'react-select';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+import { getAllCustomer, createAccount } from '../../Service'; // Asegúrate de que estos servicios están implementados correctamente
 
-
-const CustomerAccount=props=>
-{
-
-    const [accountNumber,setAccountNumber]=useState('');
-    const [customerNumber,setCustomerNumber]=useState('');
-    const [openingBalance,setOpeningBalance]=useState('');
-    const [openingDate,setOpeningDate]=useState('');
-    const [accountType,setAccountType]=useState('');
-    const [accountStatus,setAccountStatus]=useState('');
-    const [accountTypeOptions, setAccountTypeOptions] = useState([]);
-    const [accountStatusOptions, setAccountStatusOptions] = useState([]);
-    const[err,setError]=useState('')
+const CreateAccountForm = () => {
     const navigate = useNavigate();
-    const [isLoggedin, setIsLoggedin] = useState(false);//It is used to validate every component rendering
-    
-        
-        const accountTypeHandler = (selectedOption) => {
-            setAccountType(selectedOption.value);
-            console.log("Account Type", selectedOption.value);
+    const [customers, setCustomers] = useState([]);
+    const [selectedCustomer, setSelectedCustomer] = useState(null);
+    const [accountNumber, setAccountNumber] = useState('');
+    const [openingBalance, setOpeningBalance] = useState('');
+    const [openingDate, setOpeningDate] = useState('');
+    const [accountType, setAccountType] = useState('');
+
+    useEffect(() => {
+        const fetchCustomers = async () => {
+            try {
+                const response = await getAllCustomer();
+                setCustomers(response.data.map(customer => ({
+                    value: customer.customerNumber,
+                    label: `${customer.customerNumber} - ${customer.firstName} ${customer.lastName}`
+                })));
+            } catch (error) {
+                console.error('Failed to fetch customers', error);
+            }
         };
-        
-        const StatusHandler=(selectedOption)=>{
-            setAccountStatus(selectedOption.value);
-            console.log("Acccount Status",selectedOption.value);
+        fetchCustomers();
+    }, []);
+
+    const handleCustomerChange = selectedOption => {
+        setSelectedCustomer(selectedOption);
+    };
+
+    const handleAccountTypeChange = selectedOption => {
+        setAccountType(selectedOption);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!selectedCustomer || !accountNumber || !openingBalance || !openingDate || !accountType) {
+            Swal.fire('Please fill all fields', '', 'warning');
+            return;
         }
-        
-        const init=async()=>{
 
-            //setting option for dropdown
-            const tempAccountType = [{
-                    "value": "Current",
-                    "label": "Current"
-                }, {
-                    "value": "Savings",
-                    "label": "Savings"
-                }];
-            setAccountTypeOptions(tempAccountType);
-            const tempAccountStatus = [{
-                "value": "Active",
-                "label": "Active"
-            }, {
-                "value": "Inactive",
-                "label": "Inactive"
-            }];
-            setAccountStatusOptions(tempAccountStatus);
-          }
-    
-        useEffect(() => {
-            if(localStorage.getItem('token-info')!=null)
-            {
-              setIsLoggedin(true)
+        const accountData = {
+            accountNumber,
+            openingBalance,
+            accountOpeningDate: openingDate,
+            accountType: accountType.value,
+            accountStatus: 'Active', // Asumiendo que quieres que la cuenta esté activa al crearse
+            customer: {
+                customerNumber: selectedCustomer.value
             }
-            init();
-        }, []);
-
-
-        const Add = async (e) => {
-            e.preventDefault();
-
-            const accountData = {
-                accountNumber: parseInt(accountNumber),
-                openingBalance: parseInt(openingBalance),
-                accountOpeningDate: openingDate,
-                accountStatus,
-                accountType
-            };
-            console.log(accountData);
-        try{
-            let {status} = await createAccount(customerNumber, accountData);
-            if(status === 201) {
-              Swal.fire({
-                title: "Account Details created successfully!",
-                type: "success", 
-                confirmButtonText: 'Ok'
-              }).then((result) => {  if (result.isConfirmed) { navigate("/customers")}});
-              setAccountNumber('');
-              setCustomerNumber('');
-              setOpeningDate('');
-              setOpeningBalance('');
-            }  
-          }
-          catch(err)
-          {
-            if(err.response.status === 400) {
-                Swal.fire({
-                    title: err.response.data,
-                    type: "success", 
-                    confirmButtonText: 'Ok'
-                  }).then((result) => {  if (result.isConfirmed) { navigate("/add-account")}});
-            } else {
-                Swal.fire({
-                    title: "Bad Request! Make sure the values are not empty ",
-                    type: "success", 
-                    confirmButtonText: 'Ok'
-                  }).then((result) => {  if (result.isConfirmed) { navigate("/add-account")}});
-            }
-          }
         };
-                              
+
+        try {
+            await createAccount(accountData);
+            Swal.fire('Account created successfully!', '', 'success');
+            navigate('/customers');
+        } catch (error) {
+            Swal.fire('Failed to create account', error.message, 'error');
+        }
+    };
     return (
-    <>
-        {isLoggedin?
-        (
-            <div>
-            <Dashboard/>  
-
-        <div class="customer-form">
-            
-            <div class="customer">
-
-                <h1 class="text-center">Add Account</h1>
-
-                <form class="needs-validation was-validated">
-                    <div class="form-group ">
-                        <label class="form-label">Account Number</label>
-                        <input class="form-control" type="text"
-                            onChange={(e)=>setAccountNumber(e.target.value)}
+        <div className="customer-form">
+            <div className="customer">
+                <h1 className="text-center">Create Account</h1>
+                <form onSubmit={handleSubmit} className="needs-validation was-validated">
+                    <div className="form-group">
+                        <label className="form-label">Account Number:</label>
+                        <input
+                            className="form-control"
+                            type="text"
                             value={accountNumber}
-                            placeholder="Account Number"
-                            required />
+                            onChange={e => setAccountNumber(e.target.value)}
+                            required
+                        />
                     </div>
-                    <div class="form-group ">
-                        <label class="form-label">Customer Number</label>
-                        <input class="form-control" type="text"
-                            onChange={(e)=>setCustomerNumber(e.target.value)}
-                            value={customerNumber}
-                            placeholder="Customer Number"
-                            required />
+                    <div className="form-group">
+                    <label className="form-label">Customer Number:</label>
+                    <Select
+                        options={customers}
+                        onChange={handleCustomerChange}
+                        value={selectedCustomer}
+                        getOptionValue={(option) => option.value}
+                        getOptionLabel={(option) => option.label}
+                        isSearchable
+                        isClearable
+                    />
+                </div>
+                    <div className="form-group">
+                        <label className="form-label">Opening Balance:</label>
+                        <input
+                            className="form-control"
+                            type="number"
+                            value={openingBalance}
+                            onChange={e => setOpeningBalance(e.target.value)}
+                            required
+                        />
                     </div>
-                    <div class="form-group ">
-                        <label class="form-label">Opening Balance</label>
-                        <input class="form-control" type="number" min="5000"
-                              onChange={(e)=>setOpeningBalance(e.target.value)}
-                              value={openingBalance}
-                            placeholder="atleast 5000"
-                            required />
+                    <div className="form-group">
+                        <label className="form-label">Opening Date:</label>
+                        <input
+                            className="form-control"
+                            type="date"
+                            value={openingDate}
+                            onChange={e => setOpeningDate(e.target.value)}
+                            required
+                        />
                     </div>
-                    <div class="form-group ">
-                        <label class="form-label">Opening Date</label>
-                        <input class="form-control" type="date"
-                         onChange={(e)=>setOpeningDate(e.target.value)}
-                         value={openingDate}
-                            required />
+                    <div className="form-group">
+                        <label className="form-label">Account Type:</label>
+                        <Select
+                            classNamePrefix="select"
+                            options={[
+                                { value: 'savings', label: 'Ahorros' },
+                                { value: 'current', label: 'Corriente' }
+                            ]}
+                            onChange={handleAccountTypeChange}
+                            value={accountType}
+                        />
                     </div>
-                    <div class="form-group ">
-                        <label class="form-label">Account Type</label>
-                        <Select options={accountTypeOptions}  onChange={accountTypeHandler}></Select>
-                    </div>
-                    <div class="form-group ">
-                        <label class="form-label">Account Status</label>
-                        <Select options={accountStatusOptions}  onChange={StatusHandler}></Select>
-                    </div>
-                    <input class="btn btn-success w-100" type="submit" onClick={Add} value="Add"  />
+                    <button type="submit" className="btn btn-success w-100">Create Account</button>
                 </form>
             </div>
         </div>
-        </div>):(<Home />)
-        }
-    </>
-    )
-}
-export default CustomerAccount;
+    );
+};
+
+export default CreateAccountForm;

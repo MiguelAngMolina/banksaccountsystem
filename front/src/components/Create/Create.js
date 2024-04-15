@@ -47,40 +47,42 @@ const Create = () => {
 
     return (
         <div className="create-admin-form">
-            <h1>Create New Admin</h1>
-            <form onSubmit={handleCreateAdmin}>
-                <div className="form-group">
-                    <label htmlFor="userId">User Id</label>
-                    <input
-                        type="text"
-                        id="userId"
-                        value={userId}
-                        onChange={(e) => setUserId(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="confirmPassword">Confirm Password</label>
-                    <input
-                        type="password"
-                        id="confirmPassword"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        required
-                    />
-                </div>
-                <button type="submit" className="btn btn-primary">Add Admin</button>
-            </form>
+            <div className="create">
+                <h1>Create New Admin</h1>
+                <form onSubmit={handleCreateAdmin}>
+                    <div className="form-group">
+                        <label htmlFor="userId">User Id</label>
+                        <input
+                            type="text"
+                            id="userId"
+                            value={userId}
+                            onChange={(e) => setUserId(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="confirmPassword">Confirm Password</label>
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <button type="submit" className="btn btn-primary">Add Admin</button>
+                </form>
+            </div>
         </div>
     );
 };

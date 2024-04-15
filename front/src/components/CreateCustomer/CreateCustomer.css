@@ -7,76 +7,54 @@
 
 /* Estilo del contenedor principal para formularios */
 .customer-form {
+    margin: 4px;
     height: 100vh; /* Altura completa de la pantalla para centrar verticalmente */
     display: flex;
     align-items: center; /* Centrado vertical */
     justify-content: center; /* Centrado horizontal */
     font-family: 'Arial', sans-serif; /* Fuente más estándar y profesional que cursive */
-    padding: 20px; /* Espaciado alrededor del formulario */
+    background-color: #f5f5f5; /* Color de fondo suave */
 }
 
 /* Estilo del contenedor específico del cliente */
-.customer {
-    width: 100%; /* Ancho completo para móviles, puede ajustarse con media queries para pantallas más grandes */
-    max-width: 500px; /* Máximo ancho del formulario */
-    background-color: #ffffff; /* Fondo blanco para el formulario */
-    padding: 2rem; /* Espaciado interno */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil para el formulario */
-    overflow: hidden; /* Asegura que nada se desborde del contenedor */
+.customer-form .customer {
+    padding: 30px; /* Espaciado alrededor del formulario */
+    width: 100%;
+    max-width: 600px; /* Ajusta este valor según tus necesidades */
+    margin: 0 auto; /* Centra el contenedor en la pantalla */
+    background-color: #fff; /* Fondo blanco para el formulario */
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1); /* Sombra suave alrededor del formulario */
+    border-radius: 10px; /* Bordes redondeados */
 }
 
-/* Estilo para los títulos dentro del formulario */
-.customer h1 {
-    text-align: center; /* Centra el título */
-    color: #333; /* Color oscuro para mejor lectura */
-    margin-bottom: 2rem; /* Espaciado debajo del título */
+.customer-form .customer form {
+    width: 100%;
+}
+
+.customer-form .customer form input,
+.customer-form .customer form .btn {
+    width: 100%;
+    padding: 10px; /* Espaciado interno para los campos de entrada y botones */
+    margin-bottom: 10px; /* Espaciado entre los campos de entrada y botones */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+.customer-form .customer form .btn {
+    background-color: #007BFF; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    border: none; /* Elimina el borde del botón */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón sobre el botón */
+}
+
+.customer-form .customer h1 {
+    text-align: center;
+    color: #333; /* Color de texto más oscuro */
 }
 
 /* Estilo general para las etiquetas de los campos del formulario */
-.customer form .form-label {
+.customer-form .customer form .form-label {
     display: block; /* Asegura que la etiqueta es un bloque para controlar mejor el espacio */
     margin-bottom: .5rem; /* Espaciado debajo de la etiqueta */
     color: #666; /* Color gris oscuro para las etiquetas */
     font-weight: bold; /* Hace el texto de la etiqueta en negrita */
-}
-
-/* Estilo de los inputs del formulario */
-.customer form input[type="text"],
-.customer form input[type="number"],
-.customer form input[type="date"] {
-    width: 100%; /* Los inputs toman todo el ancho disponible */
-    padding: 8px 10px; /* Espaciado interno para los inputs */
-    border: 1px solid #ccc; /* Borde sutil */
-    border-radius: 4px; /* Bordes levemente redondeados */
-    margin-bottom: 1rem; /* Espaciado debajo de cada input */
-}
-
-/* Estilo para los botones del formulario */
-.customer form .btn {
-    width: 100%; /* Ancho completo para el botón */
-    padding: 10px; /* Espaciado interno del botón */
-    border: none; /* Sin borde */
-    border-radius: 4px; /* Bordes redondeados */
-    color: white; /* Texto en color blanco */
-    background-color: #28a745; /* Color de fondo verde para el botón */
-    cursor: pointer; /* Cursor indica un elemento clickable */
-}
-
-.customer h1 {
-    text-align: center;
-    color: #333; /* Asegúrate de que este color contraste bien con el fondo */
-    margin-top: 50%; /* Añade un margen superior si es necesario */
-    margin-bottom: 20px; /* Asegura espacio debajo del título */
-}
-
-.customer form .btn:hover {
-    background-color: #218838; /* Oscurecer el botón al pasar el mouse */
-}
-
-/* Media queries para ajustes en pantallas más grandes */
-@media (min-width: 768px) {
-    .customer {
-        padding: 40px; /* Más espaciado interno */
-    }
 }

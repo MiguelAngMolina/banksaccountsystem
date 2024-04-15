@@ -1,19 +1,22 @@
+/* Reset básico para asegurar consistencia en todos los navegadores */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Estilo del contenedor principal */
 .create-admin-form {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to right, #56ab2f, #a8e063); /* Asumiendo un fondo degradado similar */
-    font-family: 'Helvetica Neue', sans-serif; /* Fuente similar a la que parece en la imagen */
+    background: linear-gradient(to right, #56ab2f, #a8e063); /* Fondo degradado */
+    font-family: 'Helvetica Neue', sans-serif;
 }
 
-.create {
+/* Estilo específico para la caja del formulario, incluyendo sombras y bordes */
+.create-admin-form .create {
     width: 360px;
     background: #fff;
     padding: 40px;
@@ -22,21 +25,23 @@
     text-align: center;
 }
 
-.create h1 {
+/* Estilos para los títulos dentro del formulario */
+.create-admin-form .create h1 {
     margin-bottom: 24px;
     font-size: 30px;
     color: #333;
 }
 
-.create form {
+/* Estilos para el formulario y sus elementos internos */
+.create-admin-form .create form {
     font-size: 18px;
 }
 
-.create form .form-group {
+.create-admin-form .create form .form-group {
     margin-bottom: 16px;
 }
 
-.create form .form-group label {
+.create-admin-form .create form .form-group label {
     display: block;
     text-align: left;
     margin-bottom: 5px;
@@ -45,7 +50,7 @@
     color: #333;
 }
 
-.create form .form-group input {
+.create-admin-form .create form .form-group input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -53,11 +58,12 @@
     font-size: 16px;
 }
 
-.create form .form-group input::placeholder {
+.create-admin-form .create form .form-group input::placeholder {
     color: #999;
 }
 
-.create form button {
+/* Estilos para el botón de submit */
+.create-admin-form .create form button {
     width: 100%;
     padding: 12px 20px;
     border: none;
@@ -70,15 +76,16 @@
     margin-top: 8px;
 }
 
-.create form button:hover {
+.create-admin-form .create form button:hover {
     background-color: #4cae4c;
 }
 
-.create form button:active {
+.create-admin-form .create form button:active {
     background-color: #5cb85c;
 }
 
-.create form a {
+/* Estilos para los enlaces dentro del formulario */
+.create-admin-form .create form a {
     display: inline-block;
     margin-top: 24px;
     color: #5cb85c;
@@ -86,6 +93,6 @@
     text-decoration: none;
 }
 
-.create form a:hover {
+.create-admin-form .create form a:hover {
     text-decoration: underline;
 }

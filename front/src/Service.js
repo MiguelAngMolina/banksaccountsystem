@@ -15,6 +15,11 @@ export const registerAdmin = async (body) => {
     const response = await adminService.post(`/admin/create`, body);
     return response;
 };
+export const getAllAdmin = async ()=> {
+    const response = await adminService.get(`/admin/list/`);
+    return response;
+}
+
 
 
 
@@ -31,10 +36,13 @@ export const deleteCustomerAccount = async (id) => {
 };
 
 
-export const createAccount = async (id, body) => {
-    const response = await adminService.post(`/account/${id}`, body);
+// create account
+export const createAccount = async (accountData) => {
+    const response = await adminService.post(`/account/`, accountData);
     return response;
 };
+
+
 
 
 
