@@ -8,7 +8,7 @@ import java.util.Date;
 public class Transaccion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long transaction_id;
+    private String transaction_id;
 
     @Column(unique = true, nullable = false)
     private String transactionNumber;
@@ -29,12 +29,12 @@ public class Transaccion {
 
     // Getters and Setters
 
-    public Long getTransactionId() {
+    public String getTransactionId() {
         return transaction_id;
     }
 
 
-    public void setTransactionId(Long transaction_id) {
+    public void setTransactionId(String transaction_id) {
         this.transaction_id = transaction_id;
     }
 
@@ -49,8 +49,8 @@ public class Transaccion {
     }
 
 
-    public Cuenta getFromAccount() {
-        return fromAccount;
+    public String getFromAccount() {
+        return toAccount != null ? toAccount.getAccountId() : null; 
     }
 
 
@@ -59,14 +59,17 @@ public class Transaccion {
     }
 
 
-    public Cuenta getToAccount() {
-        return toAccount;
+
+    public String getToAccount() {
+        return fromAccount != null ? fromAccount.getAccountId() : null; 
     }
 
 
     public void setToAccount(Cuenta toAccount) {
         this.toAccount = toAccount;
     }
+
+
 
 
     public Date getDate() {

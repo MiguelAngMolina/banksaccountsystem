@@ -20,11 +20,11 @@ public class Cuenta {
     private Double balance;
 
     public enum AccountType {
-        SAVINGS, CURRENT;
+        ahorros, corriente;
     }
     
     public enum AccountStatus {
-        ACTIVE, INACTIVE;
+        habilitada, inhabilitada;
     }
 
     
@@ -35,8 +35,6 @@ public class Cuenta {
     private AccountStatus account_status;
 
     // Getters and Setters
-
-
 
     public String getAccountId() {
         return account_id;
@@ -56,7 +54,7 @@ public class Cuenta {
     }
 
     public String getUserId() {
-        return usuario != null ? usuario.getUserId() : null; // Asegura que puedas acceder al ID del usuario directamente
+        return usuario != null ? usuario.getUserId() : null; 
     }
 
     public String getAccountNumber() {

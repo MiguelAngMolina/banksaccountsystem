@@ -2,6 +2,7 @@ com\capstone\bankadmin\model\Cuenta$AccountStatus.class
 com\capstone\bankadmin\repository\AdministradorRepository.class
 com\capstone\bankadmin\model\Administrador.class
 com\capstone\bankadmin\model\Transaccion.class
+com\capstone\bankadmin\dto\TransaccionDTO.class
 com\capstone\bankadmin\exception\NotFoundException.class
 com\capstone\bankadmin\controller\TransaccionController.class
 com\capstone\bankadmin\repository\TransaccionRepository.class

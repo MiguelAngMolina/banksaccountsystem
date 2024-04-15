@@ -13,5 +13,6 @@ public interface CuentaRepository extends JpaRepository<Cuenta, String> {
     Cuenta findByAccountNumber(String accountNumber);
     List<Cuenta> findByUsuarioUserId(String userId);
 
+
     
 }

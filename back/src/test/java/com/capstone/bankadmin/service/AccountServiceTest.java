@@ -36,8 +36,8 @@ public class AccountServiceTest {
 public void getAllAccountDetailsTest() {
     Usuario mockUsuario = new Usuario(); // Asumiendo que tienes una clase Usuario con un constructor sin argumentos.
     when(repo.findAll()).thenReturn(List.of(
-            new Cuenta("12", mockUsuario, "123456", 5000.0, AccountType.SAVINGS, AccountStatus.ACTIVE),
-            new Cuenta("13", mockUsuario, "654321", 15000.0, AccountType.SAVINGS, AccountStatus.INACTIVE)
+            new Cuenta("12", mockUsuario, "123456", 5000.0, AccountType.ahorros, AccountStatus.habilitada),
+            new Cuenta("13", mockUsuario, "654321", 15000.0, AccountType.ahorros, AccountStatus.habilitada)
     ));
     assertEquals(2, service.findAllCuentas().size());
 }

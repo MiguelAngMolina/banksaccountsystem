@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.capstone.bankadmin.BankAdminApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.542 s - in com.capstone.bankadmin.BankAdminApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.611 s - in com.capstone.bankadmin.BankAdminApplicationTests

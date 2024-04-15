@@ -2,8 +2,12 @@ package com.capstone.bankadmin.controller;
 
 
 import com.capstone.bankadmin.model.Cuenta;
+import com.capstone.bankadmin.model.Usuario;
 import com.capstone.bankadmin.repository.CuentaRepository;
+import com.capstone.bankadmin.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,15 +18,30 @@ public class CuentaController {
     @Autowired
     private CuentaRepository cuentaRepository;
 
+    @Autowired
+    private UsuarioRepository usuarioRepository; // Asegúrate de inyectar el repositorio de Usuario
+
+
     @GetMapping
     public List<Cuenta> getAllCuentas() {
         return cuentaRepository.findAll();
     }
 
     @PostMapping
-    public Cuenta createCuenta(@RequestBody Cuenta cuenta) {
-        return cuentaRepository.save(cuenta);
+    public ResponseEntity<?> createCuenta(@RequestBody Cuenta cuenta) {
+    if (cuenta.getUsuario() == null || cuenta.getUsuario().getUserId() == null) {
+        return new ResponseEntity<>("ID de usuario requerido", HttpStatus.BAD_REQUEST);
     }
+    Usuario usuario = usuarioRepository.findById(cuenta.getUsuario().getUserId()).orElse(null);
+    if (usuario == null) {
+        return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
+    }
+    cuenta.setUsuario(usuario);
+    cuentaRepository.save(cuenta);
+    return new ResponseEntity<>(cuenta, HttpStatus.CREATED);
+}
+
+
 
     @GetMapping("/{id}")
     public Cuenta getCuentaById(@PathVariable String id) {
@@ -39,8 +58,9 @@ public class CuentaController {
             cuenta.setAccountStatus(cuentaDetails.getAccountStatus());
             cuentaRepository.save(cuenta);
         }
-        return cuenta;
-    }
+    return cuenta;
+}
+
 
     @DeleteMapping("/{id}")
     public void deleteCuenta(@PathVariable String id) {

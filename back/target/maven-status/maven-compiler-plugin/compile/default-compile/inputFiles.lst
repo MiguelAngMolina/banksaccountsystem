@@ -11,6 +11,7 @@ C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\
 C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\com\capstone\bankadmin\repository\TransaccionRepository.java
 C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\com\capstone\bankadmin\service\CuentaService.java
 C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\com\capstone\bankadmin\model\Cuenta.java
+C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\com\capstone\bankadmin\dto\TransaccionDTO.java
 C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\com\capstone\bankadmin\BankAdminApplication.java
 C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\com\capstone\bankadmin\service\UsuarioService.java
 C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\com\capstone\bankadmin\exception\NotFoundException.java

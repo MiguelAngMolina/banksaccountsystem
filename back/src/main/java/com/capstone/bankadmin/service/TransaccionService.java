@@ -21,11 +21,11 @@ public class TransaccionService {
         return transaccionRepository.save(transaccion);
     }
 
-    public Optional<Transaccion> findTransaccionById(Long id) {
+    public Optional<Transaccion> findTransaccionById(String id) {
         return transaccionRepository.findById(id);
     }
 
-    public void deleteTransaccion(Long id) {
+    public void deleteTransaccion(String id) {
         transaccionRepository.deleteById(id);
     }
 }
