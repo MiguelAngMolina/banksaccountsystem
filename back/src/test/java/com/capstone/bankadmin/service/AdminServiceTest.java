@@ -27,7 +27,7 @@ public class AdminServiceTest {
 	@Test
 	public void shouldAuthenticateAdmin() {
 		Administrador testAdmin = getAdmin();
-		when(repo.findByUserId(testAdmin.getUserId())).thenReturn(testAdmin);
+		when(repo.findByUsername(testAdmin.getUsername())).thenReturn(testAdmin);
 		
 		boolean result = service.authenticateAdmin(testAdmin);
 		assertTrue(result);
@@ -36,7 +36,7 @@ public class AdminServiceTest {
 	@DisplayName("Should not authenticate admin")
 	@Test
 	public void shouldNotAuthenticateAdmin() {
-		when(repo.findByUserId(anyString())).thenReturn(null);
+		when(repo.findByUsername(anyString())).thenReturn(null);
 		
 		boolean result = service.authenticateAdmin(new Administrador("fakeUser", "fakeUsername", "fakePassword"));
 		assertFalse(result);

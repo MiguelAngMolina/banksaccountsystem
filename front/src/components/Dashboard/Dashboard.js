@@ -12,17 +12,15 @@ const Dashboard = (props) => {
     navigate("/");
   };
   return (
-    <div>
+    <div className="general">
       <ul>
       <li>
           <Link to="/customerlist">All Clients</Link>
         </li>
         <li>
-          <Link to="/customers">Accounts</Link>
+          <Link to="/accounts">Accounts</Link>
         </li>
-        <li>
-          <Link to="/add-account">Add Account</Link>
-        </li>
+        
         
         <li class="logout">
           <Link to="/" onClick={logout}>

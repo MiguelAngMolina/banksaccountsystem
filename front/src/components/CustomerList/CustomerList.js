@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getAllCustomer, deleteCustomer, updateCustomer } from '../../Service'; // Asegúrate de que estas funciones estén correctamente implementadas
-import { Link, useNavigate } from "react-router-dom";
+import { getAllCustomer, deleteCustomer} from '../../Service'; // Asegúrate de que estas funciones estén correctamente implementadas
+import { useNavigate } from "react-router-dom";
 import Home from '../Home/Home';
 import Dashboard from '../Dashboard/Dashboard';
 
@@ -30,17 +30,22 @@ const CustomersList = () => {
     fetchCustomers();
   }, []);
 
-  const handleDelete = async (customerNumber) => {
+  const handleDelete = async (userId) => {
     if (window.confirm(`Are you sure you want to delete this customer?`)) {
       try {
-        await deleteCustomer(customerNumber);
-        setCustomers(customers.filter(c => c.customerNumber !== customerNumber));
+        await deleteCustomer(userId);
+        setCustomers(customers.filter(c => c.userId !== userId));
         alert('Customer deleted successfully!');
       } catch (error) {
         alert('Failed to delete customer');
         console.error(error);
       }
     }
+  };
+
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' }; // Esto dará, por ejemplo, "December 31, 1989"
+    return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
   if (loading) return <div>Loading...</div>;
@@ -50,7 +55,7 @@ const CustomersList = () => {
     <>
      {isLoggedin ? (
         <>
-    <div>
+    <div >
       <Dashboard />
       <div className="container">
         <div className="py-4">
@@ -58,25 +63,29 @@ const CustomersList = () => {
           <table className="table border shadow table-hover">
             <thead className="thead-dark">
               <tr>
-                <th scope="col">Customer Number</th>
+                <th scope="col"># Customer </th>
                 <th scope="col">Name</th>
                 <th scope="col">City</th>
                 <th scope="col">Contact</th>
                 <th scope="col">Occupation</th>
+                <th scope='col'>Email</th>
+                <th scope="col">Birthday</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
               {customers.map(customer => (
-                <tr key={customer.customerNumber}>
-                  <td>{customer.customerNumber}</td>
+                <tr key={customer.userId}>
+                  <td>{customer.userId}</td>
                   <td>{customer.firstName} {customer.middleName} {customer.lastName}</td>
-                  <td>{customer.customerCity}</td>
-                  <td>{customer.customerContactNo}</td>
+                  <td>{customer.city}</td>
+                  <td>{customer.contactNumber}</td>
                   <td>{customer.occupation}</td>
+                  <td>{customer.email}</td>
+                  <td>{formatDate(customer.birthDate)}</td>
                   <td>
-                    <button className="btn btn-warning" onClick={() => navigate(`/editcustomer/${customer.customerNumber}`)}>Edit</button>
-                    <button className="btn btn-danger" onClick={() => handleDelete(customer.customerNumber)}>Delete</button>
+                    <button className="btn btn-warning" onClick={() => navigate(`/editcustomer/${customer.userId}`)}>Edit</button>
+                    <button className="btn btn-danger" onClick={() => handleDelete(customer.userId)}>Delete</button>
                   </td>
                 </tr>
               ))}

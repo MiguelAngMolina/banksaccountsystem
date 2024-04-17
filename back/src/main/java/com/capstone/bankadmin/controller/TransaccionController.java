@@ -22,12 +22,12 @@ public class TransaccionController {
     @Autowired
     private CuentaRepository cuentaRepository;  
 
-    @GetMapping
+    @GetMapping("/")
     public List<Transaccion> getAllTransacciones() {
         return transaccionRepository.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/")
     @Transactional
     public ResponseEntity<?> createTransaccion(@RequestBody TransaccionDTO transaccionDTO) {
     // Primero, encontrar las cuentas por sus ID

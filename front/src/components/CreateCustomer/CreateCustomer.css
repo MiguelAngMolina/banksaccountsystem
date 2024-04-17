@@ -1,60 +1,6 @@
-/* Estilos básicos de reinicio para asegurarse de que el margen y padding son consistentes */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-/* Estilo del contenedor principal para formularios */
-.customer-form {
-    margin: 4px;
-    height: 100vh; /* Altura completa de la pantalla para centrar verticalmente */
+.customer{
     display: flex;
-    align-items: center; /* Centrado vertical */
-    justify-content: center; /* Centrado horizontal */
-    font-family: 'Arial', sans-serif; /* Fuente más estándar y profesional que cursive */
-    background-color: #f5f5f5; /* Color de fondo suave */
+    flex-direction: column;
 }
-
-/* Estilo del contenedor específico del cliente */
-.customer-form .customer {
-    padding: 30px; /* Espaciado alrededor del formulario */
-    width: 100%;
-    max-width: 600px; /* Ajusta este valor según tus necesidades */
-    margin: 0 auto; /* Centra el contenedor en la pantalla */
-    background-color: #fff; /* Fondo blanco para el formulario */
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1); /* Sombra suave alrededor del formulario */
-    border-radius: 10px; /* Bordes redondeados */
-}
-
-.customer-form .customer form {
-    width: 100%;
-}
-
-.customer-form .customer form input,
-.customer-form .customer form .btn {
-    width: 100%;
-    padding: 10px; /* Espaciado interno para los campos de entrada y botones */
-    margin-bottom: 10px; /* Espaciado entre los campos de entrada y botones */
-    border-radius: 5px; /* Bordes redondeados */
-}
-
-.customer-form .customer form .btn {
-    background-color: #007BFF; /* Color de fondo del botón */
-    color: #fff; /* Color del texto del botón */
-    border: none; /* Elimina el borde del botón */
-    cursor: pointer; /* Cambia el cursor al pasar el ratón sobre el botón */
-}
-
-.customer-form .customer h1 {
-    text-align: center;
-    color: #333; /* Color de texto más oscuro */
-}
-
-/* Estilo general para las etiquetas de los campos del formulario */
-.customer-form .customer form .form-label {
-    display: block; /* Asegura que la etiqueta es un bloque para controlar mejor el espacio */
-    margin-bottom: .5rem; /* Espaciado debajo de la etiqueta */
-    color: #666; /* Color gris oscuro para las etiquetas */
-    font-weight: bold; /* Hace el texto de la etiqueta en negrita */
-}
+  

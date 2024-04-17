@@ -5,14 +5,14 @@ import Swal from 'sweetalert2';
 import { adminLogin } from '../../Service'; // Solo adminLogin es necesario aquí
 
 const Login = () => {
-    const [userId, setUserId] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
     const login = async (e) => {
         e.preventDefault();
         const userData = {
-            userId,
+            username,
             password,
         };
         try {
@@ -38,14 +38,14 @@ const Login = () => {
                 <h1 className="text-center">Bank Admin Login</h1>
                 <form className="needs-validation was-validated" onSubmit={login}>
                     <div className="form-group">
-                        <label className="form-label" htmlFor="email">UserId</label>
+                        <label className="form-label" htmlFor="email">Username</label>
                         <input
                             className="form-control"
                             type="text"
                             id="email"
-                            onChange={(e) => setUserId(e.target.value)}
-                            value={userId}
-                            placeholder="userId"
+                            onChange={(e) => setUsername(e.target.value)}
+                            value={username}
+                            placeholder="username"
                             required
                         />
                     </div>
@@ -65,7 +65,7 @@ const Login = () => {
                 </form>
 
                 <div className="mt-3">
-                    <Link to="/create" className="btn btn-primary">Create New Admin</Link>
+                    <Link to="/create" className="btn btn-secondary">Create New Admin</Link>
                 </div>
                 
             </div>

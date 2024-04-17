@@ -13,12 +13,12 @@ public class UsuarioController {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    @GetMapping
+    @GetMapping("/")
     public List<Usuario> getAllUsuarios() {
         return usuarioRepository.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/")
     public Usuario createUsuario(@RequestBody Usuario usuario) {
         return usuarioRepository.save(usuario);
     }

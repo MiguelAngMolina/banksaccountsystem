@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getCustomerById, updateCustomer } from '../../Service';
 import './EditCustomer.css';
-import Dashboard from '../Dashboard/Dashboard';
 
 const EditCustomer = () => {
   const { customerNumber } = useParams();
@@ -10,7 +9,6 @@ const EditCustomer = () => {
   const [customerData, setCustomerData] = useState({
     customerNumber: '',
     firstName: '',
-    middleName: '',
     lastName: '',
     customerCity: '',
     customerContactNo: '',
@@ -26,12 +24,12 @@ const EditCustomer = () => {
           setCustomerData({
             customerNumber: response.data.customerNumber || '',
             firstName: response.data.firstName || '',
-            middleName: response.data.middleName || '',
             lastName: response.data.lastName || '',
-            customerCity: response.data.customerCity || '',
-            customerContactNo: response.data.customerContactNo || '',
+            city: response.data.city || '',
+            contactNumber: response.data.contactNumber || '',
             occupation: response.data.occupation || '',
-            customerDateOfBirth: response.data.customerDateOfBirth ? response.data.customerDateOfBirth.split('T')[0] : ''
+            email: response.data.email || '',
+            birthDate: response.data.birthDate ? response.data.birthDate.split('T')[0] : ''
           });
         }
       } catch (error) {
@@ -65,32 +63,34 @@ const EditCustomer = () => {
               <input className="form-control" type="text" name="firstName" value={customerData.firstName} onChange={handleChange} required />
             </div>
             <div className="form-group">
-              <label className="form-label">Middle Name:</label>
-              <input className="form-control" type="text" name="middleName" value={customerData.middleName} onChange={handleChange} />
-            </div>
-            <div className="form-group">
               <label className="form-label">Last Name:</label>
               <input className="form-control" type="text" name="lastName" value={customerData.lastName} onChange={handleChange} required />
             </div>
             <div className="form-group">
               <label className="form-label">City:</label>
-              <input className="form-control" type="text" name="customerCity" value={customerData.customerCity} onChange={handleChange} required />
+              <input className="form-control" type="text" name="city" value={customerData.city} onChange={handleChange} required />
             </div>
             <div className="form-group">
               <label className="form-label">Contact No:</label>
-              <input className="form-control" type="text" name="customerContactNo" value={customerData.customerContactNo} onChange={handleChange} required />
+              <input className="form-control" type="text" name="contactNumber" value={customerData.contactNumber} onChange={handleChange} required />
             </div>
             <div className="form-group">
               <label className="form-label">Occupation:</label>
               <input className="form-control" type="text" name="occupation" value={customerData.occupation} onChange={handleChange} />
             </div>
+
             <div className="form-group">
-                <label className="form-label">Date of Birth:</label>
+              <label className="form-label">Email:</label>
+              <input className="form-control" type="email" name="email" value={customerData.email} onChange={handleChange} required />
+            </div>
+            
+            <div className="form-group">
+                <label className="form-label">Date of birthday:</label>
                     <input 
                     className="form-control" 
                     type="date" 
-                    name="customerDateOfBirth" 
-                    value={customerData.customerDateOfBirth ? customerData.customerDateOfBirth.split('T')[0] : ''} 
+                    name="birthDate" 
+                    value={customerData.birthDate ? customerData.birthDate.split('T')[0] : ''} 
                     onChange={handleChange} 
                     required/>
             </div>

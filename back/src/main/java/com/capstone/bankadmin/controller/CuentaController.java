@@ -23,12 +23,12 @@ public class CuentaController {
     private UsuarioRepository usuarioRepository; // Asegúrate de inyectar el repositorio de Usuario
 
 
-    @GetMapping
+    @GetMapping("/")
     public List<Cuenta> getAllCuentas() {
         return cuentaRepository.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/")
     public ResponseEntity<?> createCuenta(@RequestBody CuentaDTO cuentaDTO) {
         if (cuentaDTO.getUserId() == null) {
             return new ResponseEntity<>("ID de usuario requerido", HttpStatus.BAD_REQUEST);
