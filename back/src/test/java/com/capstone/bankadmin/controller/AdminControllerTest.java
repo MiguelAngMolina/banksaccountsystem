@@ -15,19 +15,19 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
-import com.capstone.bankadmin.model.Admin;
-import com.capstone.bankadmin.service.AdminServiceImpl;
+import com.capstone.bankadmin.model.Administrador;
+import com.capstone.bankadmin.service.AdministradorService;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
 public class AdminControllerTest {
 
 	@Mock
-	private AdminServiceImpl adminService;
+	private AdministradorService adminService;
 	
 	@InjectMocks
-	private AdminController adminController;
-	
+	private AdministradorController adminController;	
 	private ObjectMapper objMapper;
 	private MockMvc mvc;
 	
@@ -50,7 +50,7 @@ public class AdminControllerTest {
 	}
 
 	
-	private Admin getEmptyAdmin() {
-		return new Admin();
+	private Administrador getEmptyAdmin() {
+		return new Administrador();
 	}
 }

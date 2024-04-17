@@ -1,0 +1,4 @@
+front/node_modules
+
+# ignore the folder target from back folder
+back/target
