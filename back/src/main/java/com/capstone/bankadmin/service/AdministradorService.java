@@ -16,4 +16,9 @@ public class AdministradorService {
         Administrador dbAdmin = repo.findByUserId(admin.getUserId());
         return dbAdmin != null && dbAdmin.getPassword().equals(admin.getPassword());
     }
+
+    public Administrador createAdmin(Administrador admin) {
+        return repo.save(admin);
+    }
 }
+

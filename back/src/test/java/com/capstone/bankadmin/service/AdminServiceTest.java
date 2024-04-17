@@ -38,11 +38,11 @@ public class AdminServiceTest {
 	public void shouldNotAuthenticateAdmin() {
 		when(repo.findByUserId(anyString())).thenReturn(null);
 		
-		boolean result = service.authenticateAdmin(new Administrador("fakeUser", "fakePassword"));
+		boolean result = service.authenticateAdmin(new Administrador("fakeUser", "fakeUsername", "fakePassword"));
 		assertFalse(result);
 	}
 	
 	private Administrador getAdmin() {
-		return new Administrador("admin", "admin");
+		return new Administrador("admin", "admin", "admin");
 	}
 }

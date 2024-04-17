@@ -21,11 +21,19 @@ public class Transaccion {
     @JoinColumn(name = "to_account_id", nullable = false)
     private Cuenta toAccount;
 
+    @Transient 
+    private String fromUserName;
+
+    @Transient 
+    private String toUserName;
+
     @Column(nullable = false)
     private Date date;
 
     @Column(nullable = false)
     private Double amount;
+
+
 
     // Getters and Setters
 
@@ -49,8 +57,8 @@ public class Transaccion {
     }
 
 
-    public String getFromAccount() {
-        return toAccount != null ? toAccount.getAccountId() : null; 
+    public Cuenta getFromAccount() {
+        return fromAccount;
     }
 
 
@@ -59,9 +67,8 @@ public class Transaccion {
     }
 
 
-
-    public String getToAccount() {
-        return fromAccount != null ? fromAccount.getAccountId() : null; 
+    public Cuenta getToAccount() {
+        return toAccount;
     }
 
 
@@ -69,6 +76,23 @@ public class Transaccion {
         this.toAccount = toAccount;
     }
 
+
+
+    public String getFromUserName() {
+        return fromAccount != null ? fromAccount.getUsuario().getLastName() : null;
+    }
+
+    public void setFromUserName(String fromUserName) {
+        this.fromUserName = fromUserName;
+    }
+
+    public String getToUserName() {
+        return toAccount != null ? toAccount.getUsuario().getLastName() : null;
+    }
+
+    public void setToUserName(String toUserName) {
+        this.toUserName = toUserName;
+    }
 
 
 
@@ -102,6 +126,8 @@ public class Transaccion {
                 ", toAccount=" + toAccount +
                 ", date=" + date +
                 ", amount=" + amount +
+                ", fromUserName='" + fromUserName + '\'' +
+                ", toUserName='" + toUserName + '\'' +
                 '}';
     }
 
@@ -109,13 +135,16 @@ public class Transaccion {
     public Transaccion() {
     }
 
-    public Transaccion(String transactionNumber, Cuenta fromAccount, Cuenta toAccount, Date date, Double amount) {
 
-        super();
+    public Transaccion(String transactionNumber, Cuenta fromAccount, Cuenta toAccount, String fromUserName, String toUserName ,  Date date, Double amount) {
         this.transactionNumber = transactionNumber;
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;
+        this.fromUserName = fromUserName;
+        this.toUserName = toUserName;
         this.date = date;
         this.amount = amount;
     }
+
+
 }

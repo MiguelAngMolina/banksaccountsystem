@@ -1,6 +1,7 @@
 package com.capstone.bankadmin.controller;
 
 
+import com.capstone.bankadmin.dto.CuentaDTO;
 import com.capstone.bankadmin.model.Cuenta;
 import com.capstone.bankadmin.model.Usuario;
 import com.capstone.bankadmin.repository.CuentaRepository;
@@ -28,18 +29,26 @@ public class CuentaController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createCuenta(@RequestBody Cuenta cuenta) {
-    if (cuenta.getUsuario() == null || cuenta.getUsuario().getUserId() == null) {
-        return new ResponseEntity<>("ID de usuario requerido", HttpStatus.BAD_REQUEST);
+    public ResponseEntity<?> createCuenta(@RequestBody CuentaDTO cuentaDTO) {
+        if (cuentaDTO.getUserId() == null) {
+            return new ResponseEntity<>("ID de usuario requerido", HttpStatus.BAD_REQUEST);
+        }
+        Usuario usuario = usuarioRepository.findById(cuentaDTO.getUserId()).orElse(null);
+        if (usuario == null) {
+            return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
+        }
+        
+        Cuenta cuenta = new Cuenta();
+        cuenta.setAccountNumber(cuentaDTO.getAccountNumber());
+        cuenta.setBalance(cuentaDTO.getBalance());
+        cuenta.setAccountType(cuentaDTO.getAccountType());
+        cuenta.setAccountStatus(cuentaDTO.getAccountStatus());
+        cuenta.setUsuario(usuario);
+        
+        cuentaRepository.save(cuenta);
+        return new ResponseEntity<>(cuenta, HttpStatus.CREATED);
     }
-    Usuario usuario = usuarioRepository.findById(cuenta.getUsuario().getUserId()).orElse(null);
-    if (usuario == null) {
-        return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
-    }
-    cuenta.setUsuario(usuario);
-    cuentaRepository.save(cuenta);
-    return new ResponseEntity<>(cuenta, HttpStatus.CREATED);
-}
+    
 
 
 

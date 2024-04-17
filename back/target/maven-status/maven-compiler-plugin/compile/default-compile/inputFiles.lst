@@ -1,6 +1,7 @@
 C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\com\capstone\bankadmin\model\Usuario.java
 C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\com\capstone\bankadmin\controller\UsuarioController.java
 C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\com\capstone\bankadmin\service\TransaccionService.java
+C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\com\capstone\bankadmin\dto\CuentaDTO.java
 C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\com\capstone\bankadmin\service\AdministradorService.java
 C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\com\capstone\bankadmin\repository\CuentaRepository.java
 C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\com\capstone\bankadmin\utils\CorsFilter.java
@@ -14,7 +15,6 @@ C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\
 C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\com\capstone\bankadmin\dto\TransaccionDTO.java
 C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\com\capstone\bankadmin\BankAdminApplication.java
 C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\com\capstone\bankadmin\service\UsuarioService.java
-C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\com\capstone\bankadmin\exception\NotFoundException.java
 C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\com\capstone\bankadmin\repository\AdministradorRepository.java
 C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\com\capstone\bankadmin\controller\CuentaController.java
 C:\Users\Usuario\Documents\Repos\Entornos\banksaccountsystem\back\src\main\java\com\capstone\bankadmin\repository\UsuarioRepository.java

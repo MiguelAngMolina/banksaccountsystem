@@ -13,6 +13,7 @@ public class CuentaService {
     @Autowired
     private CuentaRepository cuentaRepository;
 
+    
     public List<Cuenta> findAllCuentas() {
         return cuentaRepository.findAll();
     }

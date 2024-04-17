@@ -53,10 +53,13 @@ public class Cuenta {
         this.usuario = usuario;
     }
 
+
     public String getUserId() {
         return usuario != null ? usuario.getUserId() : null; 
     }
 
+
+    
     public String getAccountNumber() {
         return accountNumber;
     }
