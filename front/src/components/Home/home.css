@@ -1,20 +1,59 @@
-.homepage{
+.homepage {
     height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: url('../../screenshots/434_generated.jpg');
-    background-size:cover;
+    flex-direction: row; /* Elementos en fila */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+    background-color: #f0f0f0; /* Color de fondo en caso de que la imagen no cargue */
+}
+
+.homepage::before {
+    content: "";
+    display: block;
+    width: 50%; /* La imagen de fondo ocupará el 50% del ancho */
+    height: 100%;
+    background: url('../../images/434_generated.jpg') center center / cover no-repeat; /* Centra la imagen y cubre el espacio disponible */
     z-index: 1;
-    font-family: cursive;
-
 }
 
-.homepage h1{
+.homepage .card {
+    width: 350px;
+    height: 500px;
+    margin-left: 5%; /* Espaciado desde la imagen de fondo */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente */
+}
+
+
+.homepage h1 {
     font-size: 4rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.homepage p{
-    font-size: 2rem;
+.homepage p {
+    font-size: 1.2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    background-color: #418137;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.button:hover {
+    background-color: #30632f;
 }
