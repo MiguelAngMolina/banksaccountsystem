@@ -1,59 +1,68 @@
-.homepage {
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.homepage{
     height: 100vh;
     display: flex;
-    flex-direction: row; /* Elementos en fila */
-    justify-content: center; /* Centra los elementos horizontalmente */
-    align-items: center; /* Centra los elementos verticalmente */
-    background-color: #f0f0f0; /* Color de fondo en caso de que la imagen no cargue */
-}
-
-.homepage::before {
-    content: "";
-    display: block;
-    width: 50%; /* La imagen de fondo ocupará el 50% del ancho */
-    height: 100%;
-    background: url('../../images/434_generated.jpg') center center / cover no-repeat; /* Centra la imagen y cubre el espacio disponible */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/public/home-cover.jpg');
+    background-size: cover;
+    background-position: center;
     z-index: 1;
+    font-family: cursive;
 }
 
-.homepage .card {
-    width: 350px;
-    height: 500px;
-    margin-left: 5%; /* Espaciado desde la imagen de fondo */
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    z-index: 2;
+
+.homeprincipal{
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centra el contenido verticalmente */
-    align-items: center; /* Centra el contenido horizontalmente */
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
 }
 
 
-.homepage h1 {
-    font-size: 4rem;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.homeprincipal h1{
+    font-size: 3.5rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    animation: fadeInUp 0.8s ease-out;
+    color: rgb(87, 104, 76);
+    
 }
 
-.homepage p {
-    font-size: 1.2rem;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+.homeprincipal p{
+    font-size: 2.5rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    animation: fadeInUp 0.8s ease-out;
+    color: rgb(87, 104, 76);
 }
 
-.button {
-    margin-top: 20px;
+.buttonHome{
+    font-size: 1.5rem; 
+    margin-top: 10px;
     padding: 10px 20px;
-    font-size: 1.5rem;
-    background-color: #418137;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(84, 176, 101, 0.1);
+    transition: all 0.2s; 
+    background-color: rgb(67, 167, 67);
+    color: rgb(255, 255, 255);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    animation: fadeInUp 0.8s ease-out;
 }
 
-.button:hover {
-    background-color: #30632f;
+.buttonHome:hover {
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 12px rgba(41, 196, 60, 0.15);
 }
