@@ -9,7 +9,6 @@
     }
 }
 
-
 .homepage{
     height: 100vh;
     display: flex;
@@ -20,9 +19,9 @@
     background-size: cover;
     background-position: center;
     z-index: 1;
-    font-family: cursive;
+    font-family: 'Playfair Display', serif; /* Cambio de fuente para un aspecto más lujoso */
+    color: #EFEFEF; /* Color de texto claro para contraste */
 }
-
 
 .homeprincipal{
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
@@ -31,38 +30,42 @@
     justify-content: center;
     align-items: center;
     border-radius: 15px;
+    padding: 20px; /* Añadido padding para dar más espacio */
+    background: rgba(212, 218, 211, 0.5); /* Fondo semi-transparente para resaltar el texto */
 }
-
 
 .homeprincipal h1{
     font-size: 3.5rem;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     animation: fadeInUp 0.8s ease-out;
-    color: rgb(87, 104, 76);
-    
+    color: #1c221c;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra de texto para más profundidad */
 }
 
 .homeprincipal p{
     font-size: 2.5rem;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     animation: fadeInUp 0.8s ease-out;
-    color: rgb(87, 104, 76);
+    color: #202723;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .buttonHome{
     font-size: 1.5rem; 
-    margin-top: 10px;
+    margin-top: 12px;
     padding: 10px 20px;
     border-radius: 10px; 
     box-shadow: 0 4px 8px rgba(84, 176, 101, 0.1);
     transition: all 0.2s; 
-    background-color: rgb(67, 167, 67);
-    color: rgb(255, 255, 255);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #43A047;
+    color: #EFEFEF;
+    font-family: 'Playfair Display', serif;
     animation: fadeInUp 0.8s ease-out;
+    border: none; /* Eliminar borde para un aspecto más limpio */
 }
 
 .buttonHome:hover {
     transform: translateY(-2px); 
     box-shadow: 0 6px 12px rgba(41, 196, 60, 0.15);
+    background-color: #388E3C; /* Cambiar el color de fondo al pasar el ratón para un efecto interactivo */
 }

@@ -10,8 +10,9 @@ function Home(props) {
     return (
         <div className="homepage">
       <div className='homeprincipal'>
-      <h1>¿Aún no eres parte de la tripulación?</h1>
-      <p>Sistema de cuentas bancarias</p>
+      <h1>Sistema de cuentas bancarias</h1>
+
+      <p>¡Toma el control de las finanzas con nuestra herramienta web!</p>
       </div>
       <button  type="button" className="buttonHome"
         onClick={() => {

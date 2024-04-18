@@ -4,18 +4,26 @@
     box-sizing: border-box;
 }
 
-.login-form {
-    height: 100vh;
+.login-container {
     display: flex;
-    align-items: center;
+    height: 100vh;
+    align-items: center; /* Centrar verticalmente */
+}
+
+.login-image {
+    flex: 1;
+    background: url('/public/home-cover.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.login-form {
+    flex: 1;
+    display: flex;
     justify-content: center;
-    background:black;
-    font-family: cursive;
 }
 
 .login {
     width: 360px;
-    height: min-content;
     padding: 20px;
     border-radius: 12px;
     background: #ffffff;
