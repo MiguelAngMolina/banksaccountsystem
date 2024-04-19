@@ -1,5 +1,4 @@
 import {BrowserRouter as Router, Routes, Route} from  "react-router-dom"
-import Customer from "./components/CustomerDetails/Account";
 import Home from "./components/Home/Home";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import Login from "./components/Login/Login";
@@ -31,7 +30,7 @@ function App() {
       <Route path="/createcustomer" element={<CreateCustomer/>} />
       <Route path="/editcustomer/:customerNumber" element={<EditCustomer/>} />
       <Route path="/createaccount" element={<CreateAccount/>} />
-      <Route path="/editaccount/:accountNumber" element={<EditAccount/>} />
+      <Route path="/editaccount/:accountId" element={<EditAccount/>} />
       
 
 

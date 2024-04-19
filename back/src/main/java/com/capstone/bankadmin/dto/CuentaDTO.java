@@ -7,7 +7,6 @@ public class CuentaDTO {
     private String accountNumber;
     private Double balance;
     private Cuenta.AccountType accountType;
-    private Cuenta.AccountStatus accountStatus;
     private String userId;
 
     // Getters y setters para cada campo
@@ -35,13 +34,6 @@ public class CuentaDTO {
         this.accountType = accountType;
     }
 
-    public Cuenta.AccountStatus getAccountStatus() {
-        return accountStatus;
-    }
-
-    public void setAccountStatus(Cuenta.AccountStatus accountStatus) {
-        this.accountStatus = accountStatus;
-    }
 
     public String getUserId() {
         return userId;

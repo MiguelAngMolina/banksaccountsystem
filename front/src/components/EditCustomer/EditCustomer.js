@@ -13,7 +13,7 @@ const EditCustomer = () => {
     customerCity: '',
     customerContactNo: '',
     occupation: '',
-    customerDateOfBirth: ''
+    customerDateOfBirth: '' 
   });
 
   useEffect(() => {
