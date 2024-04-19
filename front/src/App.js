@@ -8,9 +8,11 @@ import CreateAdmin from "./components/CreateAdmin/CreateAdmin";
 import CustomersList from "./components/CustomerList/CustomerList";
 import CreateCustomer from "./components/CreateCustomer/CreateCustomer";
 import EditCustomer from "./components/EditCustomer/EditCustomer";
-import AccountsList from "./components/CustomerDetails/Account";
+import AccountsList from "./components/AccountList/Account";
 import CreateAccount from "./components/CreateAccount/CreateAccount";
 import EditAccount from "./components/EditAccount/EditAccount";
+import TransactionsList from "./components/TransaccionList/TransactionsList ";
+import CreateTransaccion from "./components/CreateTransaccion/CreateTransaccion";
 
 function App() {
   return (
@@ -31,6 +33,9 @@ function App() {
       <Route path="/editcustomer/:customerNumber" element={<EditCustomer/>} />
       <Route path="/createaccount" element={<CreateAccount/>} />
       <Route path="/editaccount/:accountId" element={<EditAccount/>} />
+      <Route path="/transactionslist" element={<TransactionsList/>} />
+      <Route path="/createtransaction" element={<CreateTransaccion/>} />
+
       
 
 

@@ -29,7 +29,7 @@ const EditCustomer = () => {
             contactNumber: response.data.contactNumber || '',
             occupation: response.data.occupation || '',
             email: response.data.email || '',
-            birthDate: response.data.birthDate ? response.data.birthDate.split('T')[0] : ''
+            birthDate: response.data.birthDate ? response.data.birthDate.slice(0, 10) : ''
           });
         }
       } catch (error) {

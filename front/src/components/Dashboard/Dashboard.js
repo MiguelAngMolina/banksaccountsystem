@@ -20,6 +20,9 @@ const Dashboard = (props) => {
         <li>
           <Link to="/accounts">Accounts</Link>
         </li>
+        <li>
+          <Link to="/transactionslist">Transactions</Link>
+        </li>
         
         
         <li class="logout">

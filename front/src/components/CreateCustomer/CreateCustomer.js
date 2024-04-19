@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { createCustomer } from '../../Service'; // Asegúrate de que la ruta sea correcta
 import './CreateCustomer.css';
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 
 
 const CreateCustomer = () => {
