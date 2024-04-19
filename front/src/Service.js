@@ -46,8 +46,8 @@ export const createAccount = async (accountData) => {
     return response;
 };
 
-export const updateAccount = async (id, accountData) => {
-    const response = await adminService.put(`/cuentas/${id}`, accountData);
+export const updateAccount = async (id, body) => {
+    const response = await adminService.put(`/cuentas/${id}`, body);
     return response;
 }
 

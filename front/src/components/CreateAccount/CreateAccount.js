@@ -1,18 +1,44 @@
-import React, { useState } from 'react';
-import { createAccount } from '../../Service'; // Reemplazar con tu función real de servicio
+import React, { useState, useEffect } from 'react';
+import { createAccount, getAllCustomer } from '../../Service';
 import { useNavigate } from 'react-router-dom';
-import Dashboard from '../Dashboard/Dashboard'; // Asumiendo que tienes un componente Dashboard
-import './CreateAccount.css';
 
 const CreateAccount = () => {
+  const navigate = useNavigate();
+  const [users, setUsers] = useState([]);
   const [accountData, setAccountData] = useState({
     userId: '',
-    accountNumber: '',
+    accountNumber: '', // Eliminamos el valor inicial aquí
     balance: '',
     accountType: '',
-    accountStatus: ''
   });
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await getAllCustomer();
+        setUsers(response.data);
+      } catch (error) {
+        console.error('Failed to fetch users:', error);
+        alert('Failed to load users: ' + error.message);
+      }
+    };
+
+    // Generar el número de cuenta al cargar el componente
+    generateAccountNumber();
+
+    fetchUsers();
+  }, []);
+
+  // Función para generar un número de cuenta aleatorio
+  const generateAccountNumber = () => {
+    const min = 9000000000;
+    const max = 9999999999;
+    const num = Math.floor(Math.random() * (max - min + 1)) + min;
+    setAccountData(prevData => ({
+      ...prevData,
+      accountNumber: num.toString()
+    }));
+  };
 
   const handleChange = (e) => {
     setAccountData({ ...accountData, [e.target.name]: e.target.value });
@@ -23,7 +49,7 @@ const CreateAccount = () => {
     try {
       const response = await createAccount(accountData);
       alert('Account created successfully!');
-      navigate('/accounts'); // Asegúrate de que esta sea la ruta correcta a tu lista de cuentas
+      navigate('/accounts');
     } catch (error) {
       alert('Failed to create the account');
       console.error(error);
@@ -32,26 +58,27 @@ const CreateAccount = () => {
 
   return (
     <div className='general'>
-      <Dashboard />
       <div className="customer-form">
         <div className="customer">
           <h1 className="text-center">Add Account</h1>
           <form className="needs-validation was-validated" onSubmit={handleSubmit}>
-            
-            {/* Aquí irían tus otros campos de formulario, como usuario ID, etc. */}
             <div className="form-group">
               <label className="form-label">User ID:</label>
-              <input
+              <select
                 className="form-control"
-                type="text"
                 name="userId"
                 value={accountData.userId}
                 onChange={handleChange}
-                placeholder="User ID"
                 required
-              />
+              >
+                <option value="">Select User</option>
+                {users.map(user => (
+                  <option key={user.userId} value={user.userId}>
+                    {user.firstName} {user.lastName} - {user.email}
+                  </option>
+                ))}
+              </select>
             </div>
-
             <div className="form-group">
               <label className="form-label">Account Number:</label>
               <input
@@ -60,8 +87,7 @@ const CreateAccount = () => {
                 name="accountNumber"
                 value={accountData.accountNumber}
                 onChange={handleChange}
-                placeholder="Account Number"
-                required
+                readOnly // Este campo es de sólo lectura, ya que el número es generado automáticamente
               />
             </div>
             <div className="form-group">
@@ -88,22 +114,6 @@ const CreateAccount = () => {
                 <option value="">Select Account Type</option>
                 <option value="ahorros">ahorros</option>
                 <option value="corriente">corriente</option>
-                {/* Añade aquí más tipos de cuenta si los hay */}
-              </select>
-            </div>
-            <div className="form-group">
-              <label className="form-label">Account Status:</label>
-              <select
-                className="form-control"
-                name="accountStatus"
-                value={accountData.accountStatus}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Select Account Status</option>
-                <option value="habilitada">habilitada</option>
-                <option value="inhabilitada">inhabilitada</option>
-                {/* Añade aquí más estados de cuenta si los hay */}
               </select>
             </div>
             <button type="submit" className="btn btn-success w-100">Create Account</button>

@@ -16,7 +16,6 @@ import com.capstone.bankadmin.model.Cuenta;
 import com.capstone.bankadmin.repository.CuentaRepository;
 import com.capstone.bankadmin.model.Usuario;
 import com.capstone.bankadmin.model.Cuenta.AccountType;
-import com.capstone.bankadmin.model.Cuenta.AccountStatus;
 
 @SpringBootTest
 public class AccountServiceTest {
@@ -36,8 +35,8 @@ public class AccountServiceTest {
 public void getAllAccountDetailsTest() {
     Usuario mockUsuario = new Usuario(); // Asumiendo que tienes una clase Usuario con un constructor sin argumentos.
     when(repo.findAll()).thenReturn(List.of(
-            new Cuenta("12", mockUsuario, "123456", 5000.0, AccountType.ahorros, AccountStatus.habilitada),
-            new Cuenta("13", mockUsuario, "654321", 15000.0, AccountType.ahorros, AccountStatus.habilitada)
+            new Cuenta("12", mockUsuario, "123456", 5000.0, AccountType.ahorros),
+            new Cuenta("13", mockUsuario, "654321", 15000.0, AccountType.ahorros)
     ));
     assertEquals(2, service.findAllCuentas().size());
 }

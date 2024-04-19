@@ -63,11 +63,10 @@ const AccountsList = () => {
             <thead className="thead-dark">
               <tr>
                 <th scope="col"># Account</th>
-                <th scope="col">User ID</th>
+                <th scope="col">User Name</th>
                 <th scope="col">Account Number</th>
                 <th scope="col">Balance</th>
                 <th scope="col">Account Type</th>
-                <th scope="col">Account Status</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
@@ -75,11 +74,10 @@ const AccountsList = () => {
               {accounts.map(account => (
                 <tr key={account.accountId}>
                   <td>{account.accountId}</td>
-                  <td>{account.userId}</td>
+                  <td>{account.usuario.firstName} {account.usuario.lastName}</td>          
                   <td>{account.accountNumber}</td>
                   <td>${account.balance.toFixed(2)}</td>
                   <td>{account.accountType}</td>
-                  <td>{account.accountStatus}</td>
                   <td>
                     <button className="btn btn-warning" onClick={() => navigate(`/editaccount/${account.accountId}`)}>Edit</button>
                     <button className="btn btn-danger" onClick={() => handleDelete(account.accountId)}>Delete</button>

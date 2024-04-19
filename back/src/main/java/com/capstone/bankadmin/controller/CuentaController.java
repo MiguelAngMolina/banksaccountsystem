@@ -42,7 +42,6 @@ public class CuentaController {
         cuenta.setAccountNumber(cuentaDTO.getAccountNumber());
         cuenta.setBalance(cuentaDTO.getBalance());
         cuenta.setAccountType(cuentaDTO.getAccountType());
-        cuenta.setAccountStatus(cuentaDTO.getAccountStatus());
         cuenta.setUsuario(usuario);
         
         cuentaRepository.save(cuenta);
@@ -58,17 +57,29 @@ public class CuentaController {
     }
 
     @PutMapping("/{id}")
-    public Cuenta updateCuenta(@PathVariable String id, @RequestBody Cuenta cuentaDetails) {
-        Cuenta cuenta = cuentaRepository.findById(id).orElse(null);
-        if (cuenta != null) {
-            cuenta.setAccountNumber(cuentaDetails.getAccountNumber());
-            cuenta.setBalance(cuentaDetails.getBalance());
-            cuenta.setAccountType(cuentaDetails.getAccountType());
-            cuenta.setAccountStatus(cuentaDetails.getAccountStatus());
-            cuentaRepository.save(cuenta);
+public ResponseEntity<?> updateCuenta(@PathVariable String id, @RequestBody CuentaDTO cuentaDTO) {
+    Cuenta cuentaExistente = cuentaRepository.findById(id).orElse(null);
+    if (cuentaExistente == null) {
+        return new ResponseEntity<>("Cuenta no encontrada", HttpStatus.NOT_FOUND);
+    }
+
+    // Actualizar los datos de la cuenta existente con los del DTO
+    cuentaExistente.setBalance(cuentaDTO.getBalance());
+    cuentaExistente.setAccountType(cuentaDTO.getAccountType());
+    
+    // Buscar y asociar el usuario si es necesario
+    if (cuentaDTO.getUserId() != null) {
+        Usuario usuario = usuarioRepository.findById(cuentaDTO.getUserId()).orElse(null);
+        if (usuario == null) {
+            return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
         }
-    return cuenta;
+        cuentaExistente.setUsuario(usuario);
+    }
+
+    cuentaRepository.save(cuentaExistente);
+    return new ResponseEntity<>(cuentaExistente, HttpStatus.OK);
 }
+
 
 
     @DeleteMapping("/{id}")

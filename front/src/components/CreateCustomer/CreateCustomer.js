@@ -64,7 +64,7 @@ const CreateCustomer = () => {
           </div>
           <div className="form-group">
             <label className="form-label">Occupation:</label>
-            <input className="form-control" type="text" name="occupation" value={customerData.occupation} onChange={handleChange} />
+            <input className="form-control" type="text" name="occupation" value={customerData.occupation} onChange={handleChange} required />
           </div>
           <div className="form-group">
             <label className="form-label">Email:</label>

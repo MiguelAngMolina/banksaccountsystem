@@ -23,16 +23,9 @@ public class Cuenta {
         ahorros, corriente;
     }
     
-    public enum AccountStatus {
-        habilitada, inhabilitada;
-    }
-
     
     @Enumerated(EnumType.STRING)
     private AccountType account_type;
-
-    @Enumerated(EnumType.STRING)
-    private AccountStatus account_status;
 
     // Getters and Setters
 
@@ -86,14 +79,6 @@ public class Cuenta {
         this.account_type = account_type;
     }
     
-    public AccountStatus getAccountStatus() {
-        return account_status;
-    }
-    
-    public void setAccountStatus(AccountStatus account_status) {
-        this.account_status = account_status;
-    }
-    
     @Override
     public String toString() {
         return "Cuenta{" +
@@ -102,20 +87,18 @@ public class Cuenta {
                 ", account_number='" + accountNumber + '\'' +
                 ", balance=" + balance +
                 ", account_type='" + account_type + '\'' +
-                ", account_status='" + account_status + '\'' +
                 '}';
     }
 
     public Cuenta () {	}
 
-    public Cuenta(String account_id, Usuario usuario, String accountNumber, Double balance, AccountType account_type, AccountStatus account_status) {
+    public Cuenta(String account_id, Usuario usuario, String accountNumber, Double balance, AccountType account_type) {
         super();
         this.account_id = account_id;
         this.usuario = usuario;
         this.accountNumber = accountNumber;
         this.balance = balance;
         this.account_type = account_type;
-        this.account_status = account_status;
     }
 
 }

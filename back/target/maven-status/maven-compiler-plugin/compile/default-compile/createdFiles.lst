@@ -1,4 +1,3 @@
-com\capstone\bankadmin\model\Cuenta$AccountStatus.class
 com\capstone\bankadmin\repository\AdministradorRepository.class
 com\capstone\bankadmin\model\Administrador.class
 com\capstone\bankadmin\dto\CuentaDTO.class
