@@ -12,8 +12,9 @@
 
 .login-image {
     flex: 1;
-    background: url('/public/home-cover.jpg') no-repeat center center;
-    background-size: cover;
+    background: url('/public/login-cover4.gif') no-repeat center center;
+    height: 100vh;
+    background-color: rgb(231, 248, 230);
 }
 
 .login-form {
@@ -23,14 +24,17 @@
 }
 
 .login {
-    width: 360px;
+    width: 500px;
     padding: 20px;
     border-radius: 12px;
     background: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    
 }
 
 .login h1 {
-    font-size: 36px;
+    font-size: 32px;
     margin-bottom: 25px;
 }
 
@@ -45,4 +49,47 @@
 .login form input[type="submit"] {
     font-size: 20px;
     margin-top: 15px;
+}
+
+.form-control{
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+}
+
+.bottonLogin{
+    background-color: #256127;
+    border-radius: 12px;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 19px;
+    margin: 6px 2px;
+    cursor: pointer;
+}
+.bottonLogin:hover {
+    background-color: #135816;
+    color: white;
+}
+
+.bottonAdd{
+    background-color: #4CAF50;
+    border-radius: 12px;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 19px;
+    margin: 6px 2px;
+    cursor: pointer;
+}
+
+.bottonAdd:hover {
+    background-color: #45a049;
+    color: white;
 }

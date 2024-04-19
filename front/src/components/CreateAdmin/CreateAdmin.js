@@ -46,44 +46,52 @@ const CreateAdmin = () => {
     };
 
     return (
+    <div className='create-admin-container'>
+        
+
         <div className="create-admin-form">
             <div className="create">
-                <h1>Create New Admin</h1>
+                <h1>Crear nuevo administrador</h1>
                 <form onSubmit={handleCreateAdmin}>
                     <div className="form-group">
-                        <label htmlFor="userId">Username</label>
+                        
                         <input
                             type="text"
                             id="userId"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
+                            placeholder='Usuario'
                             required
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="password">Password</label>
+                        
                         <input
                             type="password"
                             id="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            placeholder='Contraseña'
                             required
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="confirmPassword">Confirm Password</label>
                         <input
                             type="password"
                             id="confirmPassword"
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
+                            placeholder='Confirmar contraseña'
                             required
                         />
                     </div>
-                    <button type="submit" className="btn btn-primary">Add Admin</button>
+                    <button type="submit" className="btn btn-success w-100">Agregar administrador</button>
                 </form>
             </div>
         </div>
+        <div className='create-admin-image'>
+        </div>
+    </div>
     );
 };
 
