@@ -14,7 +14,7 @@ const CreateTransaction = () => {
     toUserName: '',
     date: new Date().toISOString().slice(0, 10), // Fecha actual en formato YYYY-MM-DD
     amount: '',
-    transactionNumber: generateTransactionNumber() // Generar número de transacción automáticamente
+    transactionNumber: generateTransactionNumber() // Número de transacción automáticamente
   });
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const CreateTransaction = () => {
     // Genera tres dígitos aleatorios.
     const digits = () => Math.floor(Math.random() * 1000).toString().padStart(3, '0');
   
-    // Genera dos letras aleatorias (una mayúscula y una minúscula).
+    // Letras aleatorias (una mayúscula y una minúscula.
     const letters = () => {
       const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
       let result = '';
@@ -67,13 +67,13 @@ const CreateTransaction = () => {
     e.preventDefault();
     try {
       const response = await createTransaction(transactionData);
-      alert('Transaction created successfully!');
+      alert('Transacción creada correctamente!');
       console.log(response);
       navigate('/transactionslist'); // Asegúrate de que esta ruta es correcta
     } catch (error) {
       console.error(error);
       Swal.fire({
-        title: "Money to transfer isn't enough:( try again!",
+        title: "El dinero para transferir no es suficiente :( ¡Inténtalo de nuevo!",
         icon: "error",
         confirmButtonText: 'Ok'
     });
@@ -85,10 +85,10 @@ const CreateTransaction = () => {
     <div className='general'>
       <div className="customer-form">
         <div className="customer">
-          <h1 className="text-center">Create Transaction</h1>
+          <h1 className="text-center">Crear transacción</h1>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label className="form-label">Transaction Number:</label>
+              <label className="form-label">Numero de transacción:</label>
               <input
                 className="form-control"
                 type="text"
@@ -98,7 +98,7 @@ const CreateTransaction = () => {
               />
             </div>
             <div className="form-group">
-              <label className="form-label">From Account:</label>
+              <label className="form-label">Cuenta de envío:</label>
               <select
                 className="form-control"
                 name="fromAccountId"
@@ -106,7 +106,7 @@ const CreateTransaction = () => {
                 onChange={handleChange}
                 required
               >
-                <option value="">Select From Account</option>
+                <option value="">Seleccinoar cuenta de envío</option>
                 {accounts.map(account => (
                   <option key={account.accountId} value={account.accountId}>
                     {account.accountId} - {account.usuario.firstName} {account.usuario.lastName} - {account.accountType} - ${account.balance.toFixed(2)}
@@ -115,7 +115,7 @@ const CreateTransaction = () => {
               </select>
             </div>
             <div className="form-group">
-              <label className="form-label">To Account:</label>
+              <label className="form-label">Cuenta que recibe:</label>
               <select
                 className="form-control"
                 name="toAccountId"
@@ -124,7 +124,7 @@ const CreateTransaction = () => {
                 required
                 disabled={!transactionData.fromAccountId}
               >
-                <option value="">Select To Account</option>
+                <option value="">Seleccionar cuenta que recibe</option>
                 {accounts.filter(account => account.accountId !== transactionData.fromAccountId).map(account => (
                   <option key={account.accountId} value={account.accountId}>
                     {account.accountId} - {account.usuario.firstName} {account.usuario.lastName}- {account.accountType} - ${account.balance.toFixed(2)}
@@ -133,7 +133,7 @@ const CreateTransaction = () => {
               </select>
             </div>
             <div className="form-group">
-              <label className="form-label">Date:</label>
+              <label className="form-label">Fecha:</label>
               <input
                 className="form-control"
                 type="date"
@@ -144,7 +144,7 @@ const CreateTransaction = () => {
               />
             </div>
             <div className="form-group">
-              <label className="form-label">Amount:</label>
+              <label className="form-label">Cantidad:</label>
               <input
                 className="form-control"
                 type="text"
@@ -154,7 +154,7 @@ const CreateTransaction = () => {
                 required
               />
             </div>
-            <button type="submit" className="btn btn-success w-100">Create Transaction</button>
+            <button type="submit" className="btn btn-success w-100">Crear transacción</button>
           </form>
         </div>
       </div>

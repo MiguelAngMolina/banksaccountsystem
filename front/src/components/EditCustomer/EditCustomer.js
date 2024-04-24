@@ -33,7 +33,7 @@ const EditCustomer = () => {
           });
         }
       } catch (error) {
-        console.error("Failed to fetch customer details", error);
+        console.error("Error al recuperar los datos del cliente", error);
       }
     };
     fetchCustomer();
@@ -56,26 +56,26 @@ const EditCustomer = () => {
     <div>
       <div className="customer-form">
       <div className="customer">
-          <h1 className="text-center">Edit Customer</h1>
+          <h1 className="text-center">Editar cliente</h1>
           <form className="needs-validation was-validated" onSubmit={handleSubmit}>
           <div className="form-group">
-              <label className="form-label">First Name:</label>
+              <label className="form-label">Nombres:</label>
               <input className="form-control" type="text" name="firstName" value={customerData.firstName} onChange={handleChange} required />
             </div>
             <div className="form-group">
-              <label className="form-label">Last Name:</label>
+              <label className="form-label">Apellidos:</label>
               <input className="form-control" type="text" name="lastName" value={customerData.lastName} onChange={handleChange} required />
             </div>
             <div className="form-group">
-              <label className="form-label">City:</label>
+              <label className="form-label">Ciudad:</label>
               <input className="form-control" type="text" name="city" value={customerData.city} onChange={handleChange} required />
             </div>
             <div className="form-group">
-              <label className="form-label">Contact No:</label>
+              <label className="form-label">Numero de contacto:</label>
               <input className="form-control" type="text" name="contactNumber" value={customerData.contactNumber} onChange={handleChange} required />
             </div>
             <div className="form-group">
-              <label className="form-label">Occupation:</label>
+              <label className="form-label">Ocupación / Cargo:</label>
               <input className="form-control" type="text" name="occupation" value={customerData.occupation} onChange={handleChange} />
             </div>
 
@@ -85,7 +85,7 @@ const EditCustomer = () => {
             </div>
             
             <div className="form-group">
-                <label className="form-label">Date of birthday:</label>
+                <label className="form-label">Fecha de nacimiento:</label>
                     <input 
                     className="form-control" 
                     type="date" 
@@ -94,7 +94,7 @@ const EditCustomer = () => {
                     onChange={handleChange} 
                     required/>
             </div>
-            <button type="submit" className="btn btn-success w-100">Save Changes</button>
+            <button type="submit" className="btn btn-success w-100">Guardar cambios</button>
           
           </form>
         </div>

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { createCustomer } from '../../Service'; // Asegúrate de que la ruta sea correcta
+import { createCustomer } from '../../Service';
 import './CreateCustomer.css';
 import { useNavigate } from 'react-router-dom';
 
 
 const CreateCustomer = () => {
   const [customerData, setCustomerData] = useState({
-    userId: '', // Cambio aquí para añadir userId si es necesario
+    userId: '',
     firstName: '',
     lastName: '',
     city: '',
@@ -28,7 +28,7 @@ const CreateCustomer = () => {
 
     try {
       const response = await createCustomer(newCustomerData);
-      alert('Cliente creado con éxito!'); // Puedes usar también una librería de notificaciones
+      alert('Cliente creado con éxito!');
       console.log(response);
       navigate('/customerlist');
 
@@ -42,27 +42,27 @@ const CreateCustomer = () => {
     <div className='general'>
     <div className="customer-form">
       <div className="customer">
-        <h1 className="text-center">Add Customer</h1>
+        <h1 className="text-center">Agregar cliente</h1>
         <form className="needs-validation was-validated" onSubmit={handleSubmit}>
         
           <div className="form-group">
-            <label className="form-label">First Name:</label>
+            <label className="form-label">Nombres:</label>
             <input className="form-control" type="text" name="firstName" value={customerData.firstName} onChange={handleChange} required />
           </div>
           <div className="form-group">
-            <label className="form-label">Last Name:</label>
+            <label className="form-label">Apellidos:</label>
             <input className="form-control" type="text" name="lastName" value={customerData.lastName} onChange={handleChange} required />
           </div>
           <div className="form-group">
-            <label className="form-label">City:</label>
+            <label className="form-label">Ciudad:</label>
             <input className="form-control" type="text" name="city" value={customerData.city} onChange={handleChange} required />
           </div>
           <div className="form-group">
-            <label className="form-label">Contact No:</label>
+            <label className="form-label">Numero de contacto:</label>
             <input className="form-control" type="text" name="contactNumber" value={customerData.contactNumber} onChange={handleChange} required />
           </div>
           <div className="form-group">
-            <label className="form-label">Occupation:</label>
+            <label className="form-label">Ocupacion/Cargo:</label>
             <input className="form-control" type="text" name="occupation" value={customerData.occupation} onChange={handleChange} required />
           </div>
           <div className="form-group">
@@ -70,10 +70,10 @@ const CreateCustomer = () => {
             <input className="form-control" type="email" name="email" value={customerData.email} onChange={handleChange} required />
           </div>
           <div className="form-group">
-            <label className="form-label">Date of Birth:</label>
+            <label className="form-label">Fecha de nacimiento:</label>
             <input className="form-control" type="date" name="birthDate" value={customerData.birthDate} onChange={handleChange} required />
           </div>
-          <button type="submit" className="btn btn-success w-100">Create Customer</button>
+          <button type="submit" className="btn btn-success w-100">Crear cliente</button>
         </form>
       </div>
     </div>

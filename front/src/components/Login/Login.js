@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import "./login.css";
 import { useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { adminLogin } from '../../Service'; // Solo adminLogin es necesario aquí
-
+import { adminLogin } from '../../Service'; 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -25,7 +24,7 @@ const Login = () => {
         } catch (err) {
             // Logica de error
             Swal.fire({
-                title: "Bad Credentials, Please try again!",
+                title: "Credenciales incorrectas, por favor inténtelo de nuevo.",
                 icon: "error",
                 confirmButtonText: 'Ok'
             });

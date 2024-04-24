@@ -34,13 +34,13 @@ const AccountsList = () => {
   }, []);
 
   const handleDelete = async (accountId) => {
-    if (window.confirm(`Are you sure you want to delete this account?`)) {
+    if (window.confirm(`¿Estás seguro de querer eliminar esta cuenta?`)) {
       try {
         await deleteCustomerAccount(accountId);
         setAccounts(accounts.filter(a => a.accountId !== accountId));
-        alert('Account deleted successfully!');
+        alert('Cuenta eliminada correctamente!');
       } catch (error) {
-        alert('Failed to delete account');
+        alert('Error al eliminar la cuenta');
         console.error(error);
       }
     }
@@ -58,16 +58,16 @@ const AccountsList = () => {
       <Dashboard />
       <div className="container">
         <div className="py-4">
-          <h1>Account Details</h1>
+          <h1>Detalles de cuenta</h1>
           <table className="table border shadow table-hover">
             <thead className="thead-dark">
               <tr>
-                <th scope="col"># Account</th>
-                <th scope="col">User Name</th>
-                <th scope="col">Account Number</th>
-                <th scope="col">Balance</th>
-                <th scope="col">Account Type</th>
-                <th scope="col">Actions</th>
+                <th scope="col"># Cuenta</th>
+                <th scope="col">Nombre de usuario</th>
+                <th scope="col">Numero de cuenta</th>
+                <th scope="col">Saldo</th>
+                <th scope="col">Tipo de cuenta</th>
+                <th scope="col">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -79,14 +79,14 @@ const AccountsList = () => {
                   <td>${account.balance.toFixed(2)}</td>
                   <td>{account.accountType}</td>
                   <td>
-                    <button className="btn btn-warning" onClick={() => navigate(`/editaccount/${account.accountId}`)}>Edit</button>
-                    <button className="btn btn-danger" onClick={() => handleDelete(account.accountId)}>Delete</button>
+                    <button style={{ marginRight: '10px' }} className="btn btn-warning" onClick={() => navigate(`/editaccount/${account.accountId}`)}>Editar</button>
+                    <button className="btn btn-danger" onClick={() => handleDelete(account.accountId)}>Eliminar</button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <button className="btn btn-primary" onClick={() => {navigate("/createaccount");}}>New Account</button> 
+          <button className="btn btn-primary" onClick={() => {navigate("/createaccount");}}>Nueva Cuenta</button> 
         </div>
       </div>
     </div>

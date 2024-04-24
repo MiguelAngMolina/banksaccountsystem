@@ -13,7 +13,7 @@ const EditAccount = () => {
   });
 
   useEffect(() => {
-    console.log("Efecto activado");  // Este log debería aparecer al cargar el componente
+    console.log("Efecto activado"); // Debugging para verificar que el efecto se activa
     const fetchAccount = async () => {
       try {
         const response = await getCustomerAccountById(accountId);
@@ -36,8 +36,8 @@ const EditAccount = () => {
           });
         }
       } catch (error) {
-        console.error("Failed to fetch account details", error.message);
-        alert("Failed to fetch account details: " + error.message);
+        console.error("Error al recuperar los datos de la cuenta", error.message);
+        alert("Error al recuperar los datos de la cuenta: " + error.message);
       }
     };
     fetchAccount();
@@ -69,10 +69,10 @@ const EditAccount = () => {
     try {
         const response = await updateAccount(accountId, accountData);
         console.log(response); // Para depuración
-        alert('Account updated successfully!');
+        alert('Cuenta actualizada correctamente!');
         navigate('/accounts');
     } catch (error) {
-        alert('Failed to update the account: ' + error.message);
+        alert('Error al actualizar la cuenta: ' + error.message);
         console.error(error);
     }
 };
@@ -82,30 +82,30 @@ const EditAccount = () => {
     <div className='general'>
       <div className="customer-form">
         <div className="customer">
-          <h1 className="text-center">Edit Account</h1>
+          <h1 className="text-center">Editar cuenta</h1>
           <form className="needs-validation was-validated" onSubmit={handleSubmit}>
             {/* Ejemplo de cómo mostrar información del usuario */}
             <div className="form-group">
-              <label className="form-label">User Name:</label>
+              <label className="form-label">Nombre de usuario:</label>
               <input className="form-control" type="text" name="user.firstName" value={accountData.user.firstName || ''} onChange={handleChange} readOnly />
             </div>
             <div className="form-group">
-              <label className="form-label">Account Number:</label>
+              <label className="form-label">Numero de cuenta:</label>
               <input className="form-control" type="text" name="accountNumber" value={accountData.accountNumber} onChange={handleChange} readOnly />
             </div>
             <div className="form-group">
-              <label className="form-label">Balance:</label>
+              <label className="form-label">Saldo:</label>
               <input className="form-control" type="text" name="balance" value={accountData.balance} onChange={handleChange} required />
             </div>
             <div className="form-group">
-              <label className="form-label">Account Type:</label>
+              <label className="form-label">Tipo de cuenta:</label>
               <select className="form-control" name="accountType" value={accountData.accountType} onChange={handleChange} required>
-                <option value="">Select Account Type</option>
-                <option value="ahorros">ahorros</option>
-                <option value="corriente">corriente</option>
+                <option value="">Seleccionar tipo de cuenta</option>
+                <option value="ahorros">Ahorros</option>
+                <option value="corriente">Corriente</option>
               </select>
             </div>
-            <button type="submit" className="btn btn-success w-100">Save Changes</button>
+            <button type="submit" className="btn btn-success w-100">Guardar cambios</button>
           </form>
         </div>
       </div>

@@ -14,7 +14,7 @@ const CreateAdmin = () => {
         e.preventDefault();
         if (password !== confirmPassword) {
             Swal.fire({
-                title: "Passwords do not match",
+                title: "Contraseñas no coinciden",
                 icon: "error",
                 confirmButtonText: 'Ok'
             });
@@ -27,18 +27,18 @@ const CreateAdmin = () => {
         };
         
         try {
-            const { status } = await registerAdmin(adminData); // Asume que esta función envía la solicitud al backend
+            const { status } = await registerAdmin(adminData); // Funcion que envia la solicitud al backend
             if (status === 200) {
                 Swal.fire({
-                    title: "Admin created successfully",
+                    title: "Admin creado exitosamente",
                     icon: "success",
                     confirmButtonText: 'Ok'
                 });
-                navigate('/login'); // O redirigir a donde consideres apropiado
+                navigate('/login'); // O redirigir al login
             }
         } catch (err) {
             Swal.fire({
-                title: "Failed to create admin",
+                title: "Error al creer el admin",
                 icon: "error",
                 confirmButtonText: 'Ok'
             });

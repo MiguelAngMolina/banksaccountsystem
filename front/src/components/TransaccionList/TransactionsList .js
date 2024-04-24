@@ -32,13 +32,13 @@ const TransactionsList = () => {
   }, []);
 
   const handleDelete = async (transactionId) => {
-    if (window.confirm('Are you sure you want to delete this transaction?')) {
+    if (window.confirm('¿Está seguro de que desea eliminar esta transacción?')) {
       try {
         await deleteTransaction(transactionId);
         setTransactions(transactions.filter(t => t.transactionId !== transactionId));
-        alert('Transaction deleted successfully!');
+        alert('Transacción eliminada correctamente!');
       } catch (error) {
-        alert('Failed to delete transaction');
+        alert('Error al eliminar transacción');
         console.error(error);
       }
     }
@@ -49,7 +49,7 @@ const TransactionsList = () => {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>Cargando...</div>;
   if (error) return <div>Error: {error}</div>;
 
   return (
@@ -60,17 +60,17 @@ const TransactionsList = () => {
       <Dashboard />
     <div className="container">
       <div className="py-4">
-        <h1>Transaction Details</h1>
+        <h1>Detalles de la transacción</h1>
         <table className="table border shadow table-hover">
           <thead className="thead-dark">
             <tr>
-              <th scope="col">Transaction ID</th>
-              <th scope="col">Transaction HASH</th>
-              <th scope="col">From Username Account</th>
-              <th scope="col">To Username Account</th>
-              <th scope="col">Date</th>
-              <th scope="col">Amount</th>
-              <th scope="col">Actions</th>
+              <th scope="col">ID de transacción</th>
+              <th scope="col">HASH de transacción</th>
+              <th scope="col">Cuenta emisora</th>
+              <th scope="col">Cuenta destino</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -83,13 +83,13 @@ const TransactionsList = () => {
                 <td>{formatDate(transaction.date)}</td>
                 <td>${transaction.amount.toFixed(2)}</td>
                 <td>
-                  <button className="btn btn-danger" onClick={() => handleDelete(transaction.transactionId)}>Delete</button>
+                  <button className="btn btn-danger" onClick={() => handleDelete(transaction.transactionId)}>Eliminar</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        <button className="btn btn-primary" onClick={() => navigate("/createtransaction")}>New Transaction</button>
+        <button className="btn btn-primary" onClick={() => navigate("/createtransaction")}>Nueva transacción</button>
       </div>
     </div>
     </div>

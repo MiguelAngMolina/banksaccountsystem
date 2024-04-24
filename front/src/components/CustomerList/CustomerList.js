@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getAllCustomer, deleteCustomer} from '../../Service'; // Asegúrate de que estas funciones estén correctamente implementadas
+import { getAllCustomer, deleteCustomer} from '../../Service';
 import { useNavigate } from "react-router-dom";
 import Home from '../Home/Home';
 import Dashboard from '../Dashboard/Dashboard';
@@ -31,20 +31,20 @@ const CustomersList = () => {
   }, []);
 
   const handleDelete = async (userId) => {
-    if (window.confirm(`Are you sure you want to delete this customer?`)) {
+    if (window.confirm(`¿Está seguro de que desea eliminar a este cliente?`)) {
       try {
         await deleteCustomer(userId);
         setCustomers(customers.filter(c => c.userId !== userId));
-        alert('Customer deleted successfully!');
+        alert('Cliente eliminado correctamente!');
       } catch (error) {
-        alert('Failed to delete customer');
+        alert('Error al eliminar el cliente');
         console.error(error);
       }
     }
   };
 
   const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' }; // Esto dará, por ejemplo, "December 31, 1989"
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
@@ -59,18 +59,18 @@ const CustomersList = () => {
       <Dashboard />
       <div className="container">
         <div className="py-4">
-          <h1>Customer Details</h1>
+          <h1>Detalles del cliente</h1>
           <table className="table border shadow table-hover">
             <thead className="thead-dark">
               <tr>
-                <th scope="col"># Customer </th>
-                <th scope="col">Name</th>
-                <th scope="col">City</th>
-                <th scope="col">Contact</th>
-                <th scope="col">Occupation</th>
+                <th scope="col"># Cliente </th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">Contacto</th>
+                <th scope="col">Ocupación / Cargo</th>
                 <th scope='col'>Email</th>
-                <th scope="col">Birthday</th>
-                <th scope="col">Actions</th>
+                <th scope="col">Fecha de nacimiento</th>
+                <th scope="col">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -84,14 +84,14 @@ const CustomersList = () => {
                   <td>{customer.email}</td>
                   <td>{formatDate(customer.birthDate)}</td>
                   <td>
-                    <button className="btn btn-warning" onClick={() => navigate(`/editcustomer/${customer.userId}`)}>Edit</button>
-                    <button className="btn btn-danger" onClick={() => handleDelete(customer.userId)}>Delete</button>
+                    <button style={{ marginRight: '10px' }}  className="btn btn-warning" onClick={() => navigate(`/editcustomer/${customer.userId}`)}>Editar</button>
+                    <button className="btn btn-danger" onClick={() => handleDelete(customer.userId)}>Eliminar</button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <button className="btn btn-primary" onClick={() => {navigate("/createcustomer");}}>New Customer</button> 
+          <button className="btn btn-primary" onClick={() => {navigate("/createcustomer");}}>Nuevo cliente</button> 
         </div>
       </div>
     </div>

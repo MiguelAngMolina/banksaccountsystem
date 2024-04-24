@@ -18,8 +18,8 @@ const CreateAccount = () => {
         const response = await getAllCustomer();
         setUsers(response.data);
       } catch (error) {
-        console.error('Failed to fetch users:', error);
-        alert('Failed to load users: ' + error.message);
+        console.error('Fallo al recuperar usuarios:', error);
+        alert('Error al cargar usuarios: ' + error.message);
       }
     };
 
@@ -48,10 +48,10 @@ const CreateAccount = () => {
     e.preventDefault();
     try {
       const response = await createAccount(accountData);
-      alert('Account created successfully!');
+      alert('¡Cuenta creada con éxito!');
       navigate('/accounts');
     } catch (error) {
-      alert('Failed to create the account');
+      alert('Error al crear la cuenta');
       console.error(error);
     }
   };
@@ -60,10 +60,10 @@ const CreateAccount = () => {
     <div className='general'>
       <div className="customer-form">
         <div className="customer">
-          <h1 className="text-center">Add Account</h1>
+          <h1 className="text-center">Agregar cuenta</h1>
           <form className="needs-validation was-validated" onSubmit={handleSubmit}>
             <div className="form-group">
-              <label className="form-label">User ID:</label>
+              <label className="form-label">ID usuario:</label>
               <select
                 className="form-control"
                 name="userId"
@@ -71,7 +71,7 @@ const CreateAccount = () => {
                 onChange={handleChange}
                 required
               >
-                <option value="">Select User</option>
+                <option value="">Seleccionar Usuario</option>
                 {users.map(user => (
                   <option key={user.userId} value={user.userId}>
                     {user.firstName} {user.lastName} - {user.email}
@@ -80,7 +80,7 @@ const CreateAccount = () => {
               </select>
             </div>
             <div className="form-group">
-              <label className="form-label">Account Number:</label>
+              <label className="form-label">Numero de Cuenta:</label>
               <input
                 className="form-control"
                 type="text"
@@ -91,7 +91,7 @@ const CreateAccount = () => {
               />
             </div>
             <div className="form-group">
-              <label className="form-label">Balance:</label>
+              <label className="form-label">Saldo:</label>
               <input
                 className="form-control"
                 type="text"
@@ -103,7 +103,7 @@ const CreateAccount = () => {
               />
             </div>
             <div className="form-group">
-              <label className="form-label">Account Type:</label>
+              <label className="form-label">Tipo de cuenta:</label>
               <select
                 className="form-control"
                 name="accountType"
@@ -111,12 +111,12 @@ const CreateAccount = () => {
                 onChange={handleChange}
                 required
               >
-                <option value="">Select Account Type</option>
-                <option value="ahorros">ahorros</option>
-                <option value="corriente">corriente</option>
+                <option value="">Seleccionar tipo de cuenta:</option>
+                <option value="ahorros">Ahorros</option>
+                <option value="corriente">Corriente</option>
               </select>
             </div>
-            <button type="submit" className="btn btn-success w-100">Create Account</button>
+            <button type="submit" className="btn btn-success w-100">Crear Cuenta</button>
           </form>
         </div>
       </div>

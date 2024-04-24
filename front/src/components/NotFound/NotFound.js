@@ -17,12 +17,12 @@ function NotFound(props) {
             
             <div class="contant_box_404">
             <h3 class="h2">
-            Look like you're lost
+            Parece que estás perdido
             </h3>
             
-            <p>the page you are looking for not avaible!</p>
+            <p>La página que busca no está disponible!</p>
             
-            <a href="/" class="link_404">Go to Home</a>
+            <a href="/" class="link_404">Ir a Inicio</a>
         </div>
             </div>
             </div>

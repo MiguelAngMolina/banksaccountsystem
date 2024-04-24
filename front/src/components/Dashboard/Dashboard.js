@@ -15,19 +15,19 @@ const Dashboard = (props) => {
     <div className="general">
       <ul>
       <li>
-          <Link to="/customerlist">All Clients</Link>
+          <Link to="/customerlist">Clientes</Link>
         </li>
         <li>
-          <Link to="/accounts">Accounts</Link>
+          <Link to="/accounts">Cuentas</Link>
         </li>
         <li>
-          <Link to="/transactionslist">Transactions</Link>
+          <Link to="/transactionslist">Transacciones</Link>
         </li>
         
         
         <li class="logout">
           <Link to="/" onClick={logout}>
-            Logout
+            Cierre de sesión
           </Link>
         </li>
       </ul>
