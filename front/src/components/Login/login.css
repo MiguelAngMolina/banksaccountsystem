@@ -59,6 +59,15 @@
     border: 1px solid #ccc;
 }
 
+.form-control:invalid {
+    border: 1px solid #ccc; /* Change to your preferred color for invalid fields */
+    /* You may want to add box-shadow or other properties to indicate invalid fields */
+  }
+
+.form-control:valid {
+  border: 1px solid #ccc; /* Change to your preferred color for valid fields */
+}
+
 .bottonLogin{
     background-color: #256127;
     border-radius: 12px;

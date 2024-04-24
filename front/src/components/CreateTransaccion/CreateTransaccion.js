@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "./CreateTransaccion.css";
 import { createTransaction, getAllCustomerAccount } from '../../Service';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';

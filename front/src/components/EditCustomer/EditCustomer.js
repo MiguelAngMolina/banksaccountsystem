@@ -57,7 +57,7 @@ const EditCustomer = () => {
       <div className="customer-form">
       <div className="customer">
           <h1 className="text-center">Editar cliente</h1>
-          <form className="needs-validation was-validated" onSubmit={handleSubmit}>
+          <form className="" onSubmit={handleSubmit}>
           <div className="form-group">
               <label className="form-label">Nombres:</label>
               <input className="form-control" type="text" name="firstName" value={customerData.firstName} onChange={handleChange} required />

@@ -42,8 +42,8 @@ const CreateCustomer = () => {
     <div className='general'>
     <div className="customer-form">
       <div className="customer">
-        <h1 className="text-center">Agregar cliente</h1>
-        <form className="needs-validation was-validated" onSubmit={handleSubmit}>
+        <h1 style={{ marginTop: '10px' }} className="text-center">Agregar cliente</h1>
+        <form className="" onSubmit={handleSubmit}>
         
           <div className="form-group">
             <label className="form-label">Nombres:</label>

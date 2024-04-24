@@ -2,6 +2,9 @@
     background-color: rgb(246, 248, 247);
 }
 
+.customer h1{
+    margin-top: 10px;
+}
 
 .customer{
     display: flex;

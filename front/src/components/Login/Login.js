@@ -39,7 +39,7 @@ const Login = () => {
             <div className="login-form">
                 <div className="login">
                     <h1 className="text-center">Acceso a la administración del banco</h1>
-                    <form className="needs-validation was-validated" onSubmit={login}>
+                    <form className="" onSubmit={login}>
                         <div className="form-group">
                             
                             <input

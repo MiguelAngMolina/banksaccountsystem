@@ -83,7 +83,7 @@ const EditAccount = () => {
       <div className="customer-form">
         <div className="customer">
           <h1 className="text-center">Editar cuenta</h1>
-          <form className="needs-validation was-validated" onSubmit={handleSubmit}>
+          <form className="" onSubmit={handleSubmit}>
             {/* Ejemplo de cómo mostrar información del usuario */}
             <div className="form-group">
               <label className="form-label">Nombre de usuario:</label>
